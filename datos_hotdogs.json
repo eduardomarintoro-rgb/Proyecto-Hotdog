@@ -1,0 +1,117 @@
+{
+    "ingredientes": {
+        "panes": [
+            {
+                "Nombre": "simple",
+                "Tipo": "blanco",
+                "Tamaño": 6,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "integral",
+                "Tipo": "trigo entero",
+                "Tamaño": 6,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "especial",
+                "Tipo": "queso",
+                "Tamaño": 9,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "grande",
+                "Tipo": "blanco",
+                "Tamaño": 9,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "italiano",
+                "Tipo": "oregano",
+                "Tamaño": 9,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "sin gluten",
+                "Tipo": "arroz",
+                "Tamaño": 6,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "saludable",
+                "Tipo": "avena",
+                "Tamaño": 9,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "gigante",
+                "Tipo": "ajonjolí",
+                "Tamaño": 12,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "submarino",
+                "Tipo": "blanco",
+                "Tamaño": 12,
+                "Unidad": "pulgadas"
+            }
+        ],
+        "salchichas": [
+            {
+                "Nombre": "weiner",
+                "Tipo": "cerdo",
+                "Tamaño": 6,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "breakfast",
+                "Tipo": "res",
+                "Tamaño": 6,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "alemana",
+                "Tipo": "cerdo",
+                "Tamaño": 9,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "francesa",
+                "Tipo": "res",
+                "Tamaño": 9,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "polaca",
+                "Tipo": "mezcla",
+                "Tamaño": 9,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "light",
+                "Tipo": "pollo",
+                "Tamaño": 6,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "boudin",
+                "Tipo": "pollo",
+                "Tamaño": 9,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "vienna",
+                "Tipo": "mezcla",
+                "Tamaño": 12,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "salicce",
+                "Tipo": "cerdo",
+                "Tamaño": 12,
+                "Unidad": "pulgadas"
+            }
+        ],
+        "salsas": [
+            {
+                "id": 
