@@ -227,24 +227,6 @@ class App():
                     serializados.append({"Error": f"No se pudo serializar el objeto {type(obj).__name__}"})
             return serializados
 
-<<<<<<< Updated upstream
-        # 2. Función auxiliar para serializar un HotDog (maneja sus sub-objetos)
-        # Se ha agregado 'self' como primer argumento posicional.
-        def _serializar_hotdog(self, hotdog_obj):
-            """Serializa un objeto HotDog para el JSON, usando la información de los ingredientes."""
-            return {
-                # Se necesita adaptar la llamada aquí para usar el self explícito
-                "Pan": hotdog_obj.pan.info_pan(), # Asumo info_pan() existe y devuelve dict
-                "Salchicha": hotdog_obj.salchicha.info_salchicha(), # Asumo info_salchicha() existe y devuelve dict
-                # Serializar listas de objetos de ingredientes
-                # NOTA DE CORRECCIÓN: Llamamos a _serializar_lista con la lista de objetos, no necesita 'self'
-                "Salsas": _serializar_lista(hotdog_obj.salsas),
-                "Toppings": _serializar_lista(hotdog_obj.toppings),
-                "Acompañante": hotdog_obj.acompañante.info_acompañante() if hotdog_obj.acompañante else None # Manejar None
-            }
-
-        # 3. Construir el diccionario de datos a guardar
-=======
         # Función de codificación para manejar objetos personalizados. 
         # Esta función será pasada a json.dump(default=...)
         def _hotdog_json_encoder(obj):
@@ -293,7 +275,6 @@ class App():
             raise TypeError(f"Objeto de tipo {type(obj).__name__} no es serializable a JSON.")
 
         # 1. Construir el diccionario de datos a guardar (usando las listas de objetos directamente)
->>>>>>> Stashed changes
         datos_a_guardar = {
             "ingredientes": {
                 "panes": _serializar_lista(self.pan),
@@ -310,11 +291,6 @@ class App():
         
         # 4. Guardar en archivo JSON
         try:
-<<<<<<< Updated upstream
-            with open(nombre_archivo, 'w', encoding='utf-8') as f:
-                # Usar indent=4 para formato legible y ensure_ascii=False para guardar caracteres UTF-8 (como ñ, tildes)
-                json.dump(datos_a_guardar, f, indent=4, ensure_ascii=False)
-=======
             # Serializar a string en memoria primero para forzar cualquier fallo de codificación
             json_text = json.dumps(datos_a_guardar, indent=4, ensure_ascii=False, default=_hotdog_json_encoder)
 
@@ -327,20 +303,14 @@ class App():
 
             # Reemplazar el archivo de destino
             os.replace(temp_name, nombre_archivo)
->>>>>>> Stashed changes
             print(f"ÉXITO: Los datos se han guardado en '{nombre_archivo}' correctamente.")
 
         except IOError as e:
             print(f"ERROR: No se pudo escribir en el archivo '{nombre_archivo}': {e}")
         except Exception as e:
-<<<<<<< Updated upstream
-            print(f"ERROR: Ocurrió un error inesperado durante el guardado: {e}")
-        print ("[italic green]=== Guardado finalizado ===")
-=======
             # Si ocurre un error de serialización, json.dumps lanzará antes de tocar el archivo
             print(f"ERROR: Ocurrió un error inesperado durante el guardado: {e}")
         print("[italic green] === GUARDADO FINALIZADO ===")
->>>>>>> Stashed changes
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------
         
