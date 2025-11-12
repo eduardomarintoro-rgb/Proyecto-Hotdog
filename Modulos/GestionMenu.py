@@ -51,7 +51,7 @@ def agregar_hotdog(hotdogs, panes, salchichas, acompañantes, salsas, toppings):
     for i in range(len(salsas)):
         print(f"{i+1}. {salsas[i].nombre}")
     nuevas_salsas = []
-    while True:
+    while len(nuevas_salsas) < len(salsas):
         seleccion = input("\nSeleccione el número de la salsa que desea agregar (o '0' para terminar): ")
         if seleccion == "0":
             break
@@ -61,7 +61,7 @@ def agregar_hotdog(hotdogs, panes, salchichas, acompañantes, salsas, toppings):
     for i in range(len(toppings)):
         print(f"{i+1}. {toppings[i].nombre}")
     nuevos_toppings = []
-    while True:
+    while len(nuevos_toppings) < len(toppings):
         seleccion = input("\nSeleccione el número del topping que desea agregar (o '0' para terminar): ")
         if seleccion == "0":
             break
@@ -73,47 +73,28 @@ def agregar_hotdog(hotdogs, panes, salchichas, acompañantes, salsas, toppings):
     nuevo_acompañante = acompañantes[int(input("\nSeleccione el número del acompañante que desea agregar: "))-1]
 
     nombre_hotdog = input("\nIngrese el nombre del nuevo hotdog: ")
-    nuevo_hotdog = armar_hotdog(nombre_hotdog, nuevo_pan, nueva_salchicha, nuevas_salsas, nuevos_toppings, nuevo_acompañante)
 
-    if nuevo_hotdog is None:
-        return
-    else:
-        hotdogs.append(nuevo_hotdog)
-        print("\n[italic green]Hotdog agregado exitosamente.")
+    nombre_hotdog_normalizado = nombre_hotdog.strip().lower()
+    for i in hotdogs:
+        if nombre_hotdog_normalizado == str(i.nombre).strip().lower():
+            print("\n[italic red]Ese hotdog ya existe. No se puede crear el hotdog.")
+            return
+
+    nuevo_hotdog = armar_hotdog(nombre_hotdog, nuevo_pan, nueva_salchicha, nuevas_salsas, nuevos_toppings, nuevo_acompañante)
+    hotdogs.append(nuevo_hotdog)
+    print("\n[italic green]Hotdog agregado exitosamente.")
 
 def armar_hotdog(nombre, nuevo_pan, nueva_salchicha, nuevas_salsas, nuevos_toppings, nuevo_acompañante):
     """Función para armar un hotdog con los ingredientes seleccionados.
     """
 
-    # El primer argumento ahora es el nombre
-    nombre_hotdog = nuevo_pan if isinstance(nuevo_pan, str) else None
-    pan = nueva_salchicha if nombre_hotdog else nuevo_pan
-    salchicha = nuevas_salsas if nombre_hotdog else nueva_salchicha
-    salsas = nuevos_toppings if nombre_hotdog else nuevas_salsas
-    toppings = nuevo_acompañante if nombre_hotdog else nuevos_toppings
-    acompañante = None if nombre_hotdog else nuevo_acompañante
-
-    if nombre_hotdog:
-        pan = pan
-        salchicha = salchicha
-        salsas = salsas
-        toppings = toppings
-        acompañante = acompañante
-    else:
-        nombre_hotdog = input("\nIngrese el nombre del nuevo hotdog: ")
-        pan = nuevo_pan
-        salchicha = nueva_salchicha
-        salsas = nuevas_salsas
-        toppings = nuevos_toppings
-        acompañante = nuevo_acompañante
-
-    if (pan.tamaño != salchicha.tamaño):
+    if (nuevo_pan.tamaño != nueva_salchicha.tamaño):
         select = input("\n[italic red] El tamaño del pan y la salchicha no coinciden. Aun asi quiere armar el hotdog? (s/n)")
         if select.lower() == "n":
             print("\n[italic red] Hotdog no armado debido a la discrepancia de tamaños.")
             return None
 
-    nuevo_hotdog = HotDog(nombre_hotdog, pan, salchicha, salsas, toppings, acompañante)
+    nuevo_hotdog = HotDog(nombre, nuevo_pan, nueva_salchicha, nuevas_salsas, nuevos_toppings, nuevo_acompañante)
     return nuevo_hotdog
 
 #Funcion para eliminar un hotdog
@@ -121,12 +102,12 @@ def eliminar_hotdog(hotdogs):
 
     print("\n[italic blue]Hotdogs disponibles:")
 
-    for i in len(hotdogs):
+    for i in range(0, len(hotdogs)):
         print(f"{i+1}. {hotdogs[i].nombre}")
 
     hotdog_eliminar = hotdogs[int(input("\nSeleccione el número del hotdog que desea eliminar: "))-1]
 
-    for i in hotdogs:
+    for i in range(0, len(hotdogs)):
         if hotdog_eliminar == hotdogs[i]:
             del hotdogs[i]
             print("\n[italic green]Hotdog eliminado exitosamente.")

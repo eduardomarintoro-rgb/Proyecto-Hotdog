@@ -6,6 +6,9 @@ from Clases.Salsa import Salsa
 from Clases.Toppings import Toppings
 from Clases.Hotdog import HotDog
 
+# 1 ---> disponible
+# 0 ---> no disponible
+
 #Funciones para listar todos los ingredientes de una categoría
 
 def listar_ingredientes_categoria_ver(panes, salchichas, acompañantes, salsas, toppings):
