@@ -4,6 +4,7 @@ class Ingrediente():
         
         self.nombre = nombre
         self.tipo = tipo
+        self.stock = 0
 
     def info_ingrediente(self):
         """Función para obtener la información del ingrediente

@@ -8,6 +8,8 @@ class Toppings():
         self.nombre = nombre
         self.tipo = tipo
         self.presentacion = presentacion
+        self.stock = 0
+
     def info_topping(self):
         """Función para obtener la información del topping.
         """

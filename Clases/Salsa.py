@@ -8,6 +8,7 @@ class Salsa():
         self.nombre = nombre
         self.base = base
         self.color = color
+        self.stock = 0
 
     def info_salsa(self):
         """Función para obtener la información de la salsa
