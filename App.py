@@ -11,6 +11,10 @@ from Clases.Hotdog import HotDog
 from Clases.Pan import Pan
 from Clases.Salchicha import Salchicha
 from Clases.Toppings import Toppings
+from Modulos.GestionMenu import gestion_menu
+from Modulos.GestionInventario import gestion_inventario    
+from Modulos.DiaVentas import simulacion_dia_de_ventas, estadisticas_dia_ventas
+from Modulos.GestionIngredientes import gestion_ingredientes
 
 URL_INGREDIENTES_JSON = "https://raw.githubusercontent.com/FernandoSapient/BPTSP05_2526-1/main/ingredientes.json"
 URL_MENU_JSON = "https://raw.githubusercontent.com/FernandoSapient/BPTSP05_2526-1/main/menu.json"
@@ -223,6 +227,7 @@ class App():
                     serializados.append({"Error": f"No se pudo serializar el objeto {type(obj).__name__}"})
             return serializados
 
+<<<<<<< Updated upstream
         # 2. Función auxiliar para serializar un HotDog (maneja sus sub-objetos)
         # Se ha agregado 'self' como primer argumento posicional.
         def _serializar_hotdog(self, hotdog_obj):
@@ -239,6 +244,56 @@ class App():
             }
 
         # 3. Construir el diccionario de datos a guardar
+=======
+        # Función de codificación para manejar objetos personalizados. 
+        # Esta función será pasada a json.dump(default=...)
+        def _hotdog_json_encoder(obj):
+            """Encoder personalizado para json.dump.
+            Devuelve objetos ya serializables (dicts, listas, strings, números) para json.
+            """
+            # 1. Serialización del HotDog: serializar sus componentes recursivamente
+            if isinstance(obj, HotDog):
+                return {
+                    "Pan": _hotdog_json_encoder(obj.pan),
+                    "Salchicha": _hotdog_json_encoder(obj.salchicha),
+                    "Salsas": [_hotdog_json_encoder(s) for s in (obj.salsas or [])],
+                    "Toppings": [_hotdog_json_encoder(t) for t in (obj.toppings or [])],
+                    "Acompañante": _hotdog_json_encoder(obj.acompañante)
+                }
+
+            # 2. Ingredientes con métodos 'info_...' (soportar variantes 'info_topping'/'info_toppings')
+            if hasattr(obj, 'info_pan'):
+                return obj.info_pan()
+            if hasattr(obj, 'info_salchicha'):
+                return obj.info_salchicha()
+            if hasattr(obj, 'info_acompañante'):
+                return obj.info_acompañante()
+            if hasattr(obj, 'info_salsa'):
+                return obj.info_salsa()
+            # soportar nombre de método en singular o plural
+            if hasattr(obj, 'info_topping'):
+                return obj.info_topping()
+            if hasattr(obj, 'info_toppings'):
+                return obj.info_toppings()
+
+            # 3. Si es un tipo built-in serializable ya, devolver tal cual
+            if isinstance(obj, (str, int, float, bool)) or obj is None:
+                return obj
+
+            # 4. Si es una lista/tuple, serializar sus elementos
+            if isinstance(obj, (list, tuple)):
+                return [_hotdog_json_encoder(x) for x in obj]
+
+            # 5. Si tiene __dict__, devolver copia de atributos (fallback)
+            if hasattr(obj, '__dict__'):
+                print(f"ADVERTENCIA: Objeto de tipo {type(obj).__name__} sin método de info conocido. Usando __dict__.")
+                return {k: _hotdog_json_encoder(v) for k, v in obj.__dict__.items()}
+
+            # 6. No serializable
+            raise TypeError(f"Objeto de tipo {type(obj).__name__} no es serializable a JSON.")
+
+        # 1. Construir el diccionario de datos a guardar (usando las listas de objetos directamente)
+>>>>>>> Stashed changes
         datos_a_guardar = {
             "ingredientes": {
                 "panes": _serializar_lista(self.pan),
@@ -255,15 +310,37 @@ class App():
         
         # 4. Guardar en archivo JSON
         try:
+<<<<<<< Updated upstream
             with open(nombre_archivo, 'w', encoding='utf-8') as f:
                 # Usar indent=4 para formato legible y ensure_ascii=False para guardar caracteres UTF-8 (como ñ, tildes)
                 json.dump(datos_a_guardar, f, indent=4, ensure_ascii=False)
+=======
+            # Serializar a string en memoria primero para forzar cualquier fallo de codificación
+            json_text = json.dumps(datos_a_guardar, indent=4, ensure_ascii=False, default=_hotdog_json_encoder)
+
+            # Escribir de forma atómica: escribir en archivo temporal y luego reemplazar
+            import tempfile
+            dir_name = os.path.dirname(os.path.abspath(nombre_archivo)) or '.'
+            with tempfile.NamedTemporaryFile('w', encoding='utf-8', dir=dir_name, delete=False) as tmp:
+                tmp.write(json_text)
+                temp_name = tmp.name
+
+            # Reemplazar el archivo de destino
+            os.replace(temp_name, nombre_archivo)
+>>>>>>> Stashed changes
             print(f"ÉXITO: Los datos se han guardado en '{nombre_archivo}' correctamente.")
+
         except IOError as e:
             print(f"ERROR: No se pudo escribir en el archivo '{nombre_archivo}': {e}")
         except Exception as e:
+<<<<<<< Updated upstream
             print(f"ERROR: Ocurrió un error inesperado durante el guardado: {e}")
         print ("[italic green]=== Guardado finalizado ===")
+=======
+            # Si ocurre un error de serialización, json.dumps lanzará antes de tocar el archivo
+            print(f"ERROR: Ocurrió un error inesperado durante el guardado: {e}")
+        print("[italic green] === GUARDADO FINALIZADO ===")
+>>>>>>> Stashed changes
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------
         
@@ -443,115 +520,12 @@ class App():
         
         print(f"Carga de datos JSON completada desde '{nombre_archivo}'.")        
 
-#------------------------------------------------------------------------------------------------------------------------------------------------- 
-
-    def gestion_ingredientes(self):
-        """Funcion para llamar al módulo de gestión de ingredientes. 
-        """        
-        while True:
-            opcion = input ("""
-    ¿Qué desea realizar?
-                                
-    1. Listar todos los productos de una categoría 
-    2. Listar todos los productos de un tipo dentro de una categoría
-    3. Agregar un ingrediente
-    4. Eliminar un ingrediente
-    5. Regresar
-                                                        
-    ---> """)
-            
-            if opcion =="1":
-                break
-            elif opcion =="2":
-                break
-            elif opcion =="3":
-                break
-            elif opcion =="4":
-                break
-            elif opcion =="5":
-                break
-            else:
-                print ("[italic red]Opción inválida")
-
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 
     def ver_estadisticas (self):
         """Función para ver las estadisticas de las simulaciones. 
         """  
         
-
-#-------------------------------------------------------------------------------------------------------------------------------------------------
-
-    def gestion_inventario(self):
-        """Menu de las acciones del inventario.
-        """        
-        os.system('cls')
-
-        while True:
-            print ("\n[italic magenta]---------- Acciones ---------- ")
-            opcion = input ("""                            
-    1. Visualizar todo el inventario 
-    2. Buscar un ingrediente específico 
-    3. Tipos de ingredientes por categoría
-    4. Actualizar la existencia de un producto específico 
-    5. Regresar
-                                
-    ---> """)
-            if opcion == "1":
-                pass
-
-            elif opcion == "2":
-                pass
-
-            elif opcion == "3":
-                pass
-
-            elif opcion == "4":
-                pass
-
-            elif opcion == "5":
-                App.menu(self)
-                break
-
-            else:
-                print("\n[italic red]Opción inválida. Introduzca una opción válida por favor.\n")
-                
-
-#-------------------------------------------------------------------------------------------------------------------------------------------------
-            
-    def gestion_menu(self):
-        """Menu para gestionar los hot dogs que se venden.
-        """        
-        os.system('cls')
-
-        while True:
-            print ("\n[italic magenta]---------- Acciones ---------- ")
-            opcion = input ("""                                                                 
-    1. Ver hotdogs disponibles
-    2. Ver inventario de un hotdog específico
-    3. Agregar un hotdog
-    4. Eliminar un hotdog
-    5. Regresar
-                        
-    ---> """)
-
-            if opcion == "1":
-                pass
-                break
-            elif opcion == "2":
-                pass
-                break
-            elif opcion == "3":
-                pass
-                break
-                
-            elif opcion == "4":
-                break
-            elif opcion == "5":
-                App.menu(self)
-                break
-            else:
-                print("\n[italic red]Opción inválida. Introduzca una opción válida por favor.\n")
             
 #-------------------------------------------------------------------------------------------------------------------------------------------------   
 
@@ -581,18 +555,23 @@ class App():
                 print ("\n[italic green] ...Cargando datos\n")
                 
             elif opcion == "2":
+                gestion_ingredientes(self)
                 print ("\n[italic green] ...Accediendo a interfaz\n")
     
             elif opcion == "3":
+                gestion_inventario(self)
                 print ("\n[italic green] ...Accediendo a interfaz\n")
                 
             elif opcion == "4":
+                gestion_menu(self)
                 print ("\n[italic green] ...Accediendo a interfaz\n")
 
             elif opcion == "5":
+                simulacion_dia_de_ventas(self)
                 print ("\n[italic green] ...Accediendo a interfaz\n")
 
             elif opcion == "6":
+                estadisticas_dia_ventas(self)
                 print ("\n[italic green] ...Accediendo a interfaz\n")
 
             elif opcion == "7":
