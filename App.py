@@ -11,6 +11,10 @@ from Clases.Hotdog import HotDog
 from Clases.Pan import Pan
 from Clases.Salchicha import Salchicha
 from Clases.Toppings import Toppings
+from Modulos.GestionMenu import gestion_menu
+from Modulos.GestionInventario import gestion_inventario    
+from Modulos.DiaVentas import simulacion_dia_de_ventas, estadisticas_dia_ventas
+from Modulos.GestionIngredientes import gestion_ingredientes
 
 URL_INGREDIENTES_JSON = "https://raw.githubusercontent.com/FernandoSapient/BPTSP05_2526-1/main/ingredientes.json"
 URL_MENU_JSON = "https://raw.githubusercontent.com/FernandoSapient/BPTSP05_2526-1/main/menu.json"
@@ -173,71 +177,89 @@ class App():
         Serializa toda la información disponible (ingredientes y hotdogs)
         y la guarda en un archivo JSON.
         """
+        print(f"\n--- INICIANDO GUARDADO DE DATOS EN {nombre_archivo} ---")
+        
+        # Serializar ingredientes usando sus métodos info_* cuando existan.
+        def _serializar_ingredientes(lista, metodo_singular=None):
+            serializados = []
+            for obj in lista:
+                try:
+                    if hasattr(obj, 'info_pan'):
+                        serializados.append(obj.info_pan())
+                    elif hasattr(obj, 'info_salchicha'):
+                        serializados.append(obj.info_salchicha())
+                    elif hasattr(obj, 'info_acompañante'):
+                        serializados.append(obj.info_acompañante())
+                    elif hasattr(obj, 'info_salsa'):
+                        serializados.append(obj.info_salsa())
+                    elif hasattr(obj, 'info_topping'):
+                        serializados.append(obj.info_topping())
+                    elif hasattr(obj, 'info_toppings'):
+                        serializados.extend(obj.info_toppings())
+                    else:
+                        # Fallback: usar atributos públicos
+                        serializados.append({k: v for k, v in getattr(obj, '__dict__', {}).items()})
+                except Exception as e:
+                    print(f"ADVERTENCIA: fallo al serializar {type(obj).__name__}: {e}")
+                    serializados.append({"Error": f"No se pudo serializar {type(obj).__name__}"})
+            return serializados
 
-        # Función de codificación para manejar objetos personalizados. 
-        # Esta función será pasada a json.dump(default=...)
-        def _hotdog_json_encoder(obj):
-            # 1. Serialización del HotDog (Llama al encoder recursivamente para sus ingredientes)
-            if isinstance(obj, HotDog):
-                return {
-                    "Pan": obj.pan,
-                    "Salchicha": obj.salchicha,
-                    "Salsas": obj.salsas,
-                    "Toppings": obj.toppings,
-                    "Acompañante": obj.acompañante
+        # Construir la estructura de salida que `cargar_datos_json` espera.
+        ingredientes_serializados = {
+            "panes": _serializar_ingredientes(self.pan),
+            "salchichas": _serializar_ingredientes(self.salchicha),
+            "salsas": _serializar_ingredientes(self.salsa),
+            "toppings": _serializar_ingredientes(self.toppings),
+            "acompañantes": _serializar_ingredientes(self.acompañantes),
+        }
+
+        hotdogs_serializados = []
+        for hd in self.hotdogs:
+            try:
+                hd_info = hd.info_hotdog() if hasattr(hd, 'info_hotdog') else {
+                    "Pan": getattr(hd, 'pan', None),
+                    "Salchicha": getattr(hd, 'salchicha', None),
+                    "Salsas": getattr(hd, 'salsas', []),
+                    "Toppings": getattr(hd, 'toppings', []),
+                    "Acompañante": getattr(hd, 'acompañante', None),
                 }
-            
-            # 2. Serialización de Ingredientes con métodos 'info_...' dedicados
-            if hasattr(obj, 'info_pan'):
-                return obj.info_pan()
-            if hasattr(obj, 'info_salchicha'):
-                return obj.info_salchicha()
-            if hasattr(obj, 'info_acompañante'):
-                return obj.info_acompañante()
-            # NUEVAS REGLAS PARA SALSA Y TOPPINGS (¡La corrección crítica!)
-            if hasattr(obj, 'info_salsa'):
-                return obj.info_salsa()
-            if hasattr(obj, 'info_toppings'):
-                return obj.info_toppings()
 
+                # Asegurar que 'Acompañante' sea None (JSON null) si no existe
+                if isinstance(hd_info.get('Acompañante'), str) and hd_info.get('Acompañante').lower() == 'none':
+                    hd_info['Acompañante'] = None
 
-            # 3. Fallback: Si se alcanza este punto, es una clase personalizada sin método info_... 
-            # o un objeto que no debería estar ahí.
-            if hasattr(obj, '__dict__'):
-                # Si una clase personalizada que se esperaba aquí (como Salsa/Toppings si no hubiéramos 
-                # añadido info_...) cayera aquí, obtendríamos la advertencia. 
-                # Ahora solo se activa si faltan métodos de info.
-                print(f"ADVERTENCIA: Objeto de tipo {type(obj).__name__} sin método de info conocido. Usando __dict__.")
-                # Devolver una copia del diccionario de atributos para serialización.
-                return obj.__dict__.copy()
+                hotdogs_serializados.append(hd_info)
+            except Exception as e:
+                print(f"ADVERTENCIA: no se pudo serializar hotdog: {e}")
 
-            # Si el objeto no es reconocido, se lanza un TypeError
-            raise TypeError(f"Objeto de tipo {type(obj).__name__} no es serializable a JSON.")
-
-        # 1. Construir el diccionario de datos a guardar (usando las listas de objetos directamente)
         datos_a_guardar = {
-            "ingredientes": {
-                "panes": self.pan,
-                "salchichas": self.salchicha,
-                "salsas": self.salsa,
-                "toppings": self.toppings,
-                "acompañantes": self.acompañantes,
-            },
-            "hotdogs_menu": self.hotdogs
+            "ingredientes": ingredientes_serializados,
+            "hotdogs_menu": hotdogs_serializados
         }
         
-        # 2. Guardar en archivo JSON
+        # 4. Guardar en archivo JSON
         try:
-            with open(nombre_archivo, 'w', encoding='utf-8') as f:
-                # CORRECCIÓN CLAVE: Usar el argumento 'default' con el encoder personalizado
-                json.dump(datos_a_guardar, f, indent=4, ensure_ascii=False, default=_hotdog_json_encoder)
+            # Serializar a string en memoria primero para forzar cualquier fallo de codificación
+            # Serializar a texto; todos los objetos ya se convirtieron a dict/list/primitive
+            json_text = json.dumps(datos_a_guardar, indent=4, ensure_ascii=False)
+
+            # Escribir de forma atómica: escribir en archivo temporal y luego reemplazar
+            import tempfile
+            dir_name = os.path.dirname(os.path.abspath(nombre_archivo)) or '.'
+            with tempfile.NamedTemporaryFile('w', encoding='utf-8', dir=dir_name, delete=False) as tmp:
+                tmp.write(json_text)
+                temp_name = tmp.name
+
+            # Reemplazar el archivo de destino
+            os.replace(temp_name, nombre_archivo)
             print(f"ÉXITO: Los datos se han guardado en '{nombre_archivo}' correctamente.")
+
         except IOError as e:
             print(f"ERROR: No se pudo escribir en el archivo '{nombre_archivo}': {e}")
         except Exception as e:
-            # Aquí es donde se captura el error de serialización si persiste
+            # Si ocurre un error de serialización, json.dumps lanzará antes de tocar el archivo
             print(f"ERROR: Ocurrió un error inesperado durante el guardado: {e}")
-        print ("[italic green] === GUARDADO FINALIZADO ===")
+            print("[italic green] === GUARDADO FINALIZADO ===")
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------
         
@@ -276,36 +298,38 @@ class App():
         
         # Función auxiliar para crear objetos de ingredientes
         def _crear_objeto_ingrediente(categoria: str, datos: dict):
-            nombre = datos.get("Nombre")
-            tipo = datos.get("Tipo")
+            # Soportar claves con diferentes capitalizaciones y nombres
+            nombre = datos.get("Nombre") or datos.get("nombre") or datos.get("name")
+            tipo = datos.get("Tipo") or datos.get("tipo")
             
             # Nota: usamos la categoría para determinar la clase y el constructor adecuado.
             # Los nombres de claves varían ligeramente entre clases (e.g., 'Base' en Salsa vs 'Tamaño' en Pan).
             
             if categoria == "panes":
-                tamaño = datos.get("Tamaño")
-                unidad = datos.get("Unidad")
+                tamaño = datos.get("Tamaño") or datos.get("tamaño") or datos.get("tamano")
+                unidad = datos.get("Unidad") or datos.get("unidad")
                 return Pan(nombre, tipo, tamaño, unidad)
             
             elif categoria == "salchichas":
-                tamaño = datos.get("Tamaño")
-                unidad = datos.get("Unidad")
+                tamaño = datos.get("Tamaño") or datos.get("tamaño")
+                unidad = datos.get("Unidad") or datos.get("unidad")
                 return Salchicha(nombre, tipo, tamaño, unidad)
 
             elif categoria == "acompañantes":
-                tamaño = datos.get("Tamaño")
-                unidad = datos.get("Unidad")
+                tamaño = datos.get("Tamaño") or datos.get("tamaño")
+                unidad = datos.get("Unidad") or datos.get("unidad")
                 return Acompañante(nombre, tipo, tamaño, unidad)
             
             elif categoria == "salsas":
-                base = datos.get("Base")
-                color = datos.get("Color")
+                # Soportar claves 'Base'/'base' y 'Color'/'color'
+                base = datos.get("Base") or datos.get("base")
+                color = datos.get("Color") or datos.get("color")
                 # Nota: La clase Salsa no hereda de Ingrediente en los archivos proporcionados, 
                 # y usa 'base' y 'color'. Su constructor es Salsa(nombre, base, color).
                 return Salsa(nombre, base, color)
             
             elif categoria == "toppings":
-                presentacion = datos.get("Presentacion")
+                presentacion = datos.get("Presentacion") or datos.get("presentacion") or datos.get("presentación")
                 # Nota: La clase Toppings no hereda de Ingrediente en los archivos proporcionados,
                 # y usa 'tipo' y 'presentacion'. Su constructor es Toppings(nombre, tipo, presentacion).
                 return Toppings(nombre, tipo, presentacion)
@@ -371,10 +395,15 @@ class App():
                     
                     # 2. Recuperar acompañante (puede ser None)
                     acompañante_obj = None
-                    acompañante_data = hotdog_data["Acompañante"]
-                    if acompañante_data:
-                        acompañante_nombre = acompañante_data["Nombre"].lower()
-                        acompañante_obj = self._acompañantes_map.get(acompañante_nombre)
+                    acompañante_data = hotdog_data.get("Acompañante")
+                    # Acompañante puede ser None, la cadena 'None', un nombre (string) o un dict
+                    if isinstance(acompañante_data, dict):
+                        acomp_nombre = (acompañante_data.get("Nombre") or acompañante_data.get("nombre"))
+                        if acomp_nombre:
+                            acompañante_obj = self._acompañantes_map.get(str(acomp_nombre).lower())
+                    elif isinstance(acompañante_data, str):
+                        if acompañante_data.lower() not in ("none", "null", ""):
+                            acompañante_obj = self._acompañantes_map.get(acompañante_data.lower())
 
                     if not pan_obj or not salchicha_obj:
                         print(f"ADVERTENCIA: Componente principal no encontrado para un HotDog. Omitiendo.")
@@ -417,115 +446,12 @@ class App():
         
         print(f"Carga de datos JSON completada desde '{nombre_archivo}'.")        
 
-#------------------------------------------------------------------------------------------------------------------------------------------------- 
-
-    def gestion_ingredientes(self):
-        """Funcion para llamar al módulo de gestión de ingredientes. 
-        """        
-        while True:
-            opcion = input ("""
-    ¿Qué desea realizar?
-                                
-    1. Listar todos los productos de una categoría 
-    2. Listar todos los productos de un tipo dentro de una categoría
-    3. Agregar un ingrediente
-    4. Eliminar un ingrediente
-    5. Regresar
-                                                        
-    ---> """)
-            
-            if opcion =="1":
-                break
-            elif opcion =="2":
-                break
-            elif opcion =="3":
-                break
-            elif opcion =="4":
-                break
-            elif opcion =="5":
-                break
-            else:
-                print ("[italic red]Opción inválida")
-
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 
     def ver_estadisticas (self):
         """Función para ver las estadisticas de las simulaciones. 
         """  
         
-
-#-------------------------------------------------------------------------------------------------------------------------------------------------
-
-    def gestion_inventario(self):
-        """Menu de las acciones del inventario.
-        """        
-        os.system('cls')
-
-        while True:
-            print ("\n[italic magenta]---------- Acciones ---------- ")
-            opcion = input ("""                            
-    1. Visualizar todo el inventario 
-    2. Buscar un ingrediente específico 
-    3. Tipos de ingredientes por categoría
-    4. Actualizar la existencia de un producto específico 
-    5. Regresar
-                                
-    ---> """)
-            if opcion == "1":
-                pass
-
-            elif opcion == "2":
-                pass
-
-            elif opcion == "3":
-                pass
-
-            elif opcion == "4":
-                pass
-
-            elif opcion == "5":
-                App.menu(self)
-                break
-
-            else:
-                print("\n[italic red]Opción inválida. Introduzca una opción válida por favor.\n")
-                
-
-#-------------------------------------------------------------------------------------------------------------------------------------------------
-            
-    def gestion_menu(self):
-        """Menu para gestionar los hot dogs que se venden.
-        """        
-        os.system('cls')
-
-        while True:
-            print ("\n[italic magenta]---------- Acciones ---------- ")
-            opcion = input ("""                                                                 
-    1. Ver hotdogs disponibles
-    2. Ver inventario de un hotdog específico
-    3. Agregar un hotdog
-    4. Eliminar un hotdog
-    5. Regresar
-                        
-    ---> """)
-
-            if opcion == "1":
-                pass
-                break
-            elif opcion == "2":
-                pass
-                break
-            elif opcion == "3":
-                pass
-                break
-                
-            elif opcion == "4":
-                break
-            elif opcion == "5":
-                App.menu(self)
-                break
-            else:
-                print("\n[italic red]Opción inválida. Introduzca una opción válida por favor.\n")
             
 #-------------------------------------------------------------------------------------------------------------------------------------------------   
 
@@ -555,18 +481,23 @@ class App():
                 print ("\n[italic green] ...Cargando datos\n")
                 
             elif opcion == "2":
+                gestion_ingredientes(self)
                 print ("\n[italic green] ...Accediendo a interfaz\n")
     
             elif opcion == "3":
+                gestion_inventario(self)
                 print ("\n[italic green] ...Accediendo a interfaz\n")
                 
             elif opcion == "4":
+                gestion_menu(self)
                 print ("\n[italic green] ...Accediendo a interfaz\n")
 
             elif opcion == "5":
+                simulacion_dia_de_ventas(self)
                 print ("\n[italic green] ...Accediendo a interfaz\n")
 
             elif opcion == "6":
+                estadisticas_dia_ventas(self)
                 print ("\n[italic green] ...Accediendo a interfaz\n")
 
             elif opcion == "7":
