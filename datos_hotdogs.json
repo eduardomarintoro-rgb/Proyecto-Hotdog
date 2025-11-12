@@ -1,0 +1,723 @@
+{
+    "ingredientes": {
+        "panes": [
+            {
+                "Nombre": "simple",
+                "Tipo": "blanco",
+                "Tamaño": 6,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "integral",
+                "Tipo": "trigo entero",
+                "Tamaño": 6,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "especial",
+                "Tipo": "queso",
+                "Tamaño": 9,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "grande",
+                "Tipo": "blanco",
+                "Tamaño": 9,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "italiano",
+                "Tipo": "oregano",
+                "Tamaño": 9,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "sin gluten",
+                "Tipo": "arroz",
+                "Tamaño": 6,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "saludable",
+                "Tipo": "avena",
+                "Tamaño": 9,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "gigante",
+                "Tipo": "ajonjolí",
+                "Tamaño": 12,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "submarino",
+                "Tipo": "blanco",
+                "Tamaño": 12,
+                "Unidad": "pulgadas"
+            }
+        ],
+        "salchichas": [
+            {
+                "Nombre": "weiner",
+                "Tipo": "cerdo",
+                "Tamaño": 6,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "breakfast",
+                "Tipo": "res",
+                "Tamaño": 6,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "alemana",
+                "Tipo": "cerdo",
+                "Tamaño": 9,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "francesa",
+                "Tipo": "res",
+                "Tamaño": 9,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "polaca",
+                "Tipo": "mezcla",
+                "Tamaño": 9,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "light",
+                "Tipo": "pollo",
+                "Tamaño": 6,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "boudin",
+                "Tipo": "pollo",
+                "Tamaño": 9,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "vienna",
+                "Tipo": "mezcla",
+                "Tamaño": 12,
+                "Unidad": "pulgadas"
+            },
+            {
+                "Nombre": "salicce",
+                "Tipo": "cerdo",
+                "Tamaño": 12,
+                "Unidad": "pulgadas"
+            }
+        ],
+        "salsas": [
+            {
+                "Nombre": "ketchup",
+                "Base": "tomate",
+                "Color": "rojo"
+            },
+            {
+                "Nombre": "mayonesa",
+                "Base": "aceite",
+                "Color": "blanco"
+            },
+            {
+                "Nombre": "BBQ",
+                "Base": "azucar morena",
+                "Color": "marrón"
+            },
+            {
+                "Nombre": "mostaza",
+                "Base": "mostaza",
+                "Color": "amarillo"
+            },
+            {
+                "Nombre": "relish",
+                "Base": "pepino",
+                "Color": "verde"
+            }
+        ],
+        "toppings": [
+            {
+                "Nombre": "tomate",
+                "Tipo": "vegetal",
+                "Presentacion": "cuadritos"
+            },
+            {
+                "Nombre": "cebolla",
+                "Tipo": "vegetal",
+                "Presentacion": "cuadritos"
+            },
+            {
+                "Nombre": "repollo",
+                "Tipo": "vegetal",
+                "Presentacion": "rallado"
+            },
+            {
+                "Nombre": "cilantro",
+                "Tipo": "vegetal",
+                "Presentacion": "picadito"
+            },
+            {
+                "Nombre": "papitas",
+                "Tipo": "fritura",
+                "Presentacion": "picadito"
+            },
+            {
+                "Nombre": "nuez moscada",
+                "Tipo": "nuez",
+                "Presentacion": "moscada"
+            }
+        ],
+        "acompañantes": [
+            {
+                "Nombre": "saladas pequeñas",
+                "Tipo": "Papas chip",
+                "Tamaño": 200,
+                "Unidad": "gramos"
+            },
+            {
+                "Nombre": "saladas medianas",
+                "Tipo": "Papas chip",
+                "Tamaño": 350,
+                "Unidad": "gramos"
+            },
+            {
+                "Nombre": "saladas grandes",
+                "Tipo": "Papas chip",
+                "Tamaño": 500,
+                "Unidad": "gramos"
+            },
+            {
+                "Nombre": "doradas con queso pequeñas",
+                "Tipo": "Papas chip",
+                "Tamaño": 200,
+                "Unidad": "gramos"
+            },
+            {
+                "Nombre": "doradas con queso medianas",
+                "Tipo": "Papas chip",
+                "Tamaño": 350,
+                "Unidad": "gramos"
+            },
+            {
+                "Nombre": "doradas con queso grandes",
+                "Tipo": "Papas chip",
+                "Tamaño": 500,
+                "Unidad": "gramos"
+            },
+            {
+                "Nombre": "Super papas",
+                "Tipo": "Papas fritas",
+                "Tamaño": 150,
+                "Unidad": "gramos"
+            },
+            {
+                "Nombre": "Papas",
+                "Tipo": "Papas fritas",
+                "Tamaño": 100,
+                "Unidad": "gramos"
+            },
+            {
+                "Nombre": "Cola Negra",
+                "Tipo": "Refresco",
+                "Tamaño": 350,
+                "Unidad": "mililitros"
+            },
+            {
+                "Nombre": "Kolita",
+                "Tipo": "Refresco",
+                "Tamaño": 350,
+                "Unidad": "mililitros"
+            },
+            {
+                "Nombre": "Té helado",
+                "Tipo": "Refesco",
+                "Tamaño": 350,
+                "Unidad": "mililitros"
+            },
+            {
+                "Nombre": "Naranjada",
+                "Tipo": "Refresco",
+                "Tamaño": 350,
+                "Unidad": "mililitros"
+            },
+            {
+                "Nombre": "Limonada",
+                "Tipo": "Jugo",
+                "Tamaño": 250,
+                "Unidad": "mililitros"
+            },
+            {
+                "Nombre": "Manzana",
+                "Tipo": "Jugo",
+                "Tamaño": 250,
+                "Unidad": "mililitros"
+            },
+            {
+                "Nombre": "Naranja",
+                "Tipo": "Jugo",
+                "Tamaño": 250,
+                "Unidad": "mililitros"
+            },
+            {
+                "Nombre": "Pera",
+                "Tipo": "Jugo",
+                "Tamaño": 250,
+                "Unidad": "mililitros"
+            },
+            {
+                "Nombre": "No vendemos alcohol",
+                "Tipo": "Alcohol",
+                "Tamaño": 500,
+                "Unidad": "mililitros"
+            }
+        ]
+    },
+    "hotdogs_menu": [
+        {
+            "Pan": {
+                "Nombre": "simple",
+                "Tipo": "blanco",
+                "Tamaño": 6,
+                "Unidad": "pulgadas"
+            },
+            "Salchicha": {
+                "Nombre": "weiner",
+                "Tipo": "cerdo",
+                "Tamaño": 6,
+                "Unidad": "pulgadas"
+            },
+            "Salsas": [],
+            "Toppings": [],
+            "Acompañante": null
+        },
+        {
+            "Pan": {
+                "Nombre": "integral",
+                "Tipo": "trigo entero",
+                "Tamaño": 6,
+                "Unidad": "pulgadas"
+            },
+            "Salchicha": {
+                "Nombre": "breakfast",
+                "Tipo": "res",
+                "Tamaño": 6,
+                "Unidad": "pulgadas"
+            },
+            "Salsas": [
+                {
+                    "Nombre": "relish",
+                    "Base": "pepino",
+                    "Color": "verde"
+                }
+            ],
+            "Toppings": [
+                {
+                    "Nombre": "cebolla",
+                    "Tipo": "vegetal",
+                    "Presentacion": "cuadritos"
+                }
+            ],
+            "Acompañante": {
+                "Nombre": "Papas",
+                "Tipo": "Papas fritas",
+                "Tamaño": 100,
+                "Unidad": "gramos"
+            }
+        },
+        {
+            "Pan": {
+                "Nombre": "grande",
+                "Tipo": "blanco",
+                "Tamaño": 9,
+                "Unidad": "pulgadas"
+            },
+            "Salchicha": {
+                "Nombre": "alemana",
+                "Tipo": "cerdo",
+                "Tamaño": 9,
+                "Unidad": "pulgadas"
+            },
+            "Salsas": [
+                {
+                    "Nombre": "ketchup",
+                    "Base": "tomate",
+                    "Color": "rojo"
+                },
+                {
+                    "Nombre": "BBQ",
+                    "Base": "azucar morena",
+                    "Color": "marrón"
+                },
+                {
+                    "Nombre": "mostaza",
+                    "Base": "mostaza",
+                    "Color": "amarillo"
+                },
+                {
+                    "Nombre": "relish",
+                    "Base": "pepino",
+                    "Color": "verde"
+                }
+            ],
+            "Toppings": [
+                {
+                    "Nombre": "cebolla",
+                    "Tipo": "vegetal",
+                    "Presentacion": "cuadritos"
+                },
+                {
+                    "Nombre": "repollo",
+                    "Tipo": "vegetal",
+                    "Presentacion": "rallado"
+                },
+                {
+                    "Nombre": "cilantro",
+                    "Tipo": "vegetal",
+                    "Presentacion": "picadito"
+                },
+                {
+                    "Nombre": "papitas",
+                    "Tipo": "fritura",
+                    "Presentacion": "picadito"
+                }
+            ],
+            "Acompañante": null
+        },
+        {
+            "Pan": {
+                "Nombre": "especial",
+                "Tipo": "queso",
+                "Tamaño": 9,
+                "Unidad": "pulgadas"
+            },
+            "Salchicha": {
+                "Nombre": "francesa",
+                "Tipo": "res",
+                "Tamaño": 9,
+                "Unidad": "pulgadas"
+            },
+            "Salsas": [
+                {
+                    "Nombre": "mayonesa",
+                    "Base": "aceite",
+                    "Color": "blanco"
+                },
+                {
+                    "Nombre": "BBQ",
+                    "Base": "azucar morena",
+                    "Color": "marrón"
+                },
+                {
+                    "Nombre": "mostaza",
+                    "Base": "mostaza",
+                    "Color": "amarillo"
+                }
+            ],
+            "Toppings": [
+                {
+                    "Nombre": "tomate",
+                    "Tipo": "vegetal",
+                    "Presentacion": "cuadritos"
+                },
+                {
+                    "Nombre": "cilantro",
+                    "Tipo": "vegetal",
+                    "Presentacion": "picadito"
+                },
+                {
+                    "Nombre": "nuez moscada",
+                    "Tipo": "nuez",
+                    "Presentacion": "moscada"
+                }
+            ],
+            "Acompañante": {
+                "Nombre": "Naranjada",
+                "Tipo": "Refresco",
+                "Tamaño": 350,
+                "Unidad": "mililitros"
+            }
+        },
+        {
+            "Pan": {
+                "Nombre": "especial",
+                "Tipo": "queso",
+                "Tamaño": 9,
+                "Unidad": "pulgadas"
+            },
+            "Salchicha": {
+                "Nombre": "polaca",
+                "Tipo": "mezcla",
+                "Tamaño": 9,
+                "Unidad": "pulgadas"
+            },
+            "Salsas": [
+                {
+                    "Nombre": "mayonesa",
+                    "Base": "aceite",
+                    "Color": "blanco"
+                },
+                {
+                    "Nombre": "BBQ",
+                    "Base": "azucar morena",
+                    "Color": "marrón"
+                },
+                {
+                    "Nombre": "relish",
+                    "Base": "pepino",
+                    "Color": "verde"
+                }
+            ],
+            "Toppings": [
+                {
+                    "Nombre": "tomate",
+                    "Tipo": "vegetal",
+                    "Presentacion": "cuadritos"
+                },
+                {
+                    "Nombre": "cilantro",
+                    "Tipo": "vegetal",
+                    "Presentacion": "picadito"
+                },
+                {
+                    "Nombre": "repollo",
+                    "Tipo": "vegetal",
+                    "Presentacion": "rallado"
+                }
+            ],
+            "Acompañante": null
+        },
+        {
+            "Pan": {
+                "Nombre": "sin gluten",
+                "Tipo": "arroz",
+                "Tamaño": 6,
+                "Unidad": "pulgadas"
+            },
+            "Salchicha": {
+                "Nombre": "light",
+                "Tipo": "pollo",
+                "Tamaño": 6,
+                "Unidad": "pulgadas"
+            },
+            "Salsas": [],
+            "Toppings": [
+                {
+                    "Nombre": "tomate",
+                    "Tipo": "vegetal",
+                    "Presentacion": "cuadritos"
+                },
+                {
+                    "Nombre": "cilantro",
+                    "Tipo": "vegetal",
+                    "Presentacion": "picadito"
+                },
+                {
+                    "Nombre": "repollo",
+                    "Tipo": "vegetal",
+                    "Presentacion": "rallado"
+                }
+            ],
+            "Acompañante": {
+                "Nombre": "Limonada",
+                "Tipo": "Jugo",
+                "Tamaño": 250,
+                "Unidad": "mililitros"
+            }
+        },
+        {
+            "Pan": {
+                "Nombre": "saludable",
+                "Tipo": "avena",
+                "Tamaño": 9,
+                "Unidad": "pulgadas"
+            },
+            "Salchicha": {
+                "Nombre": "boudin",
+                "Tipo": "pollo",
+                "Tamaño": 9,
+                "Unidad": "pulgadas"
+            },
+            "Salsas": [
+                {
+                    "Nombre": "mayonesa",
+                    "Base": "aceite",
+                    "Color": "blanco"
+                },
+                {
+                    "Nombre": "BBQ",
+                    "Base": "azucar morena",
+                    "Color": "marrón"
+                },
+                {
+                    "Nombre": "mostaza",
+                    "Base": "mostaza",
+                    "Color": "amarillo"
+                }
+            ],
+            "Toppings": [
+                {
+                    "Nombre": "tomate",
+                    "Tipo": "vegetal",
+                    "Presentacion": "cuadritos"
+                },
+                {
+                    "Nombre": "cilantro",
+                    "Tipo": "vegetal",
+                    "Presentacion": "picadito"
+                },
+                {
+                    "Nombre": "papitas",
+                    "Tipo": "fritura",
+                    "Presentacion": "picadito"
+                }
+            ],
+            "Acompañante": null
+        },
+        {
+            "Pan": {
+                "Nombre": "gigante",
+                "Tipo": "ajonjolí",
+                "Tamaño": 12,
+                "Unidad": "pulgadas"
+            },
+            "Salchicha": {
+                "Nombre": "vienna",
+                "Tipo": "mezcla",
+                "Tamaño": 12,
+                "Unidad": "pulgadas"
+            },
+            "Salsas": [
+                {
+                    "Nombre": "ketchup",
+                    "Base": "tomate",
+                    "Color": "rojo"
+                },
+                {
+                    "Nombre": "mostaza",
+                    "Base": "mostaza",
+                    "Color": "amarillo"
+                },
+                {
+                    "Nombre": "relish",
+                    "Base": "pepino",
+                    "Color": "verde"
+                }
+            ],
+            "Toppings": [
+                {
+                    "Nombre": "cebolla",
+                    "Tipo": "vegetal",
+                    "Presentacion": "cuadritos"
+                },
+                {
+                    "Nombre": "repollo",
+                    "Tipo": "vegetal",
+                    "Presentacion": "rallado"
+                }
+            ],
+            "Acompañante": null
+        },
+        {
+            "Pan": {
+                "Nombre": "submarino",
+                "Tipo": "blanco",
+                "Tamaño": 12,
+                "Unidad": "pulgadas"
+            },
+            "Salchicha": {
+                "Nombre": "salicce",
+                "Tipo": "cerdo",
+                "Tamaño": 12,
+                "Unidad": "pulgadas"
+            },
+            "Salsas": [
+                {
+                    "Nombre": "ketchup",
+                    "Base": "tomate",
+                    "Color": "rojo"
+                }
+            ],
+            "Toppings": [
+                {
+                    "Nombre": "tomate",
+                    "Tipo": "vegetal",
+                    "Presentacion": "cuadritos"
+                },
+                {
+                    "Nombre": "cebolla",
+                    "Tipo": "vegetal",
+                    "Presentacion": "cuadritos"
+                },
+                {
+                    "Nombre": "repollo",
+                    "Tipo": "vegetal",
+                    "Presentacion": "rallado"
+                },
+                {
+                    "Nombre": "cilantro",
+                    "Tipo": "vegetal",
+                    "Presentacion": "picadito"
+                },
+                {
+                    "Nombre": "papitas",
+                    "Tipo": "fritura",
+                    "Presentacion": "picadito"
+                }
+            ],
+            "Acompañante": {
+                "Nombre": "Kolita",
+                "Tipo": "Refresco",
+                "Tamaño": 350,
+                "Unidad": "mililitros"
+            }
+        },
+        {
+            "Pan": {
+                "Nombre": "italiano",
+                "Tipo": "oregano",
+                "Tamaño": 9,
+                "Unidad": "pulgadas"
+            },
+            "Salchicha": {
+                "Nombre": "francesa",
+                "Tipo": "res",
+                "Tamaño": 9,
+                "Unidad": "pulgadas"
+            },
+            "Salsas": [
+                {
+                    "Nombre": "ketchup",
+                    "Base": "tomate",
+                    "Color": "rojo"
+                }
+            ],
+            "Toppings": [
+                {
+                    "Nombre": "tomate",
+                    "Tipo": "vegetal",
+                    "Presentacion": "cuadritos"
+                },
+                {
+                    "Nombre": "cebolla",
+                    "Tipo": "vegetal",
+                    "Presentacion": "cuadritos"
+                },
+                {
+                    "Nombre": "repollo",
+                    "Tipo": "vegetal",
+                    "Presentacion": "rallado"
+                }
+            ],
+            "Acompañante": {
+                "Nombre": "saladas pequeñas",
+                "Tipo": "Papas chip",
+                "Tamaño": 200,
+                "Unidad": "gramos"
+            }
+        }
+    ]
+}
