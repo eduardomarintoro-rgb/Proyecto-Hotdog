@@ -37,18 +37,18 @@ def agregar_hotdog(hotdogs, panes, salchichas, acompañantes, salsas, toppings):
     """
 
     print("\n[italic blue]Panes disponibles:")
-    for i in len(panes):
+    for i in range(len(panes)):
         print(f"{i+1}. {panes[i].nombre}")
 
     nuevo_pan = panes[int(input("\nSeleccione el número del pan que desea agregar: "))-1]
 
     print("\n[italic blue]Salchichas disponibles:")
-    for i in len(salchichas):
+    for i in range(len(salchichas)):
         print(f"{i+1}. {salchichas[i].nombre}") 
     nueva_salchicha = salchichas[int(input("\nSeleccione el número de la salchicha que desea agregar: "))-1]
     
     print("\n[italic blue]Salsas disponibles:")
-    for i in len(salsas):
+    for i in range(len(salsas)):
         print(f"{i+1}. {salsas[i].nombre}")
     nuevas_salsas = []
     while True:
@@ -58,7 +58,7 @@ def agregar_hotdog(hotdogs, panes, salchichas, acompañantes, salsas, toppings):
         nuevas_salsas.append(salsas[int(seleccion)-1])
 
     print("\n[italic blue]Toppings disponibles:")
-    for i in len(toppings):
+    for i in range(len(toppings)):
         print(f"{i+1}. {toppings[i].nombre}")
     nuevos_toppings = []
     while True:
@@ -68,11 +68,12 @@ def agregar_hotdog(hotdogs, panes, salchichas, acompañantes, salsas, toppings):
         nuevos_toppings.append(toppings[int(seleccion)-1])
 
     print("\n[italic blue]Acompañantes disponibles:")
-    for i in len(acompañantes):
+    for i in range(len(acompañantes)):
         print(f"{i+1}. {acompañantes[i].nombre}")
     nuevo_acompañante = acompañantes[int(input("\nSeleccione el número del acompañante que desea agregar: "))-1]
-    
-    nuevo_hotdog = armar_hotdog(nuevo_pan, nueva_salchicha, nuevas_salsas, nuevos_toppings, nuevo_acompañante)
+
+    nombre_hotdog = input("\nIngrese el nombre del nuevo hotdog: ")
+    nuevo_hotdog = armar_hotdog(nombre_hotdog, nuevo_pan, nueva_salchicha, nuevas_salsas, nuevos_toppings, nuevo_acompañante)
 
     if nuevo_hotdog is None:
         return
@@ -80,19 +81,40 @@ def agregar_hotdog(hotdogs, panes, salchichas, acompañantes, salsas, toppings):
         hotdogs.append(nuevo_hotdog)
         print("\n[italic green]Hotdog agregado exitosamente.")
 
-def armar_hotdog(nuevo_pan, nueva_salchicha, nuevas_salsas, nuevos_toppings, nuevo_acompañante):
+def armar_hotdog(nombre, nuevo_pan, nueva_salchicha, nuevas_salsas, nuevos_toppings, nuevo_acompañante):
     """Función para armar un hotdog con los ingredientes seleccionados.
     """
 
-    if (nuevo_pan.tamaño != nueva_salchicha.tamaño):
-        select = ("\n[italic red] El tamaño del pan y la salchicha no coinciden. Aun asi quiere armar el hotdog? (s/n)")
-    
-    if select.lower() == "n":
-        print("\n[italic red] Hotdog no armado debido a la discrepancia de tamaños.")
-        return None
+    # El primer argumento ahora es el nombre
+    nombre_hotdog = nuevo_pan if isinstance(nuevo_pan, str) else None
+    pan = nueva_salchicha if nombre_hotdog else nuevo_pan
+    salchicha = nuevas_salsas if nombre_hotdog else nueva_salchicha
+    salsas = nuevos_toppings if nombre_hotdog else nuevas_salsas
+    toppings = nuevo_acompañante if nombre_hotdog else nuevos_toppings
+    acompañante = None if nombre_hotdog else nuevo_acompañante
+
+    if nombre_hotdog:
+        pan = pan
+        salchicha = salchicha
+        salsas = salsas
+        toppings = toppings
+        acompañante = acompañante
     else:
-        nuevo_hotdog = HotDog(nuevo_pan, nueva_salchicha, nuevas_salsas, nuevos_toppings, nuevo_acompañante)
-        return nuevo_hotdog
+        nombre_hotdog = input("\nIngrese el nombre del nuevo hotdog: ")
+        pan = nuevo_pan
+        salchicha = nueva_salchicha
+        salsas = nuevas_salsas
+        toppings = nuevos_toppings
+        acompañante = nuevo_acompañante
+
+    if (pan.tamaño != salchicha.tamaño):
+        select = input("\n[italic red] El tamaño del pan y la salchicha no coinciden. Aun asi quiere armar el hotdog? (s/n)")
+        if select.lower() == "n":
+            print("\n[italic red] Hotdog no armado debido a la discrepancia de tamaños.")
+            return None
+
+    nuevo_hotdog = HotDog(nombre_hotdog, pan, salchicha, salsas, toppings, acompañante)
+    return nuevo_hotdog
 
 #Funcion para eliminar un hotdog
 def eliminar_hotdog(hotdogs):   

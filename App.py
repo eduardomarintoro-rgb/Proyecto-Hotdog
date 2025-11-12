@@ -17,7 +17,7 @@ from Modulos.DiaVentas import simulacion_dia_de_ventas, estadisticas_dia_ventas
 from Modulos.GestionIngredientes import gestion_ingredientes
 
 URL_INGREDIENTES_JSON = "https://raw.githubusercontent.com/FernandoSapient/BPTSP05_2526-1/main/ingredientes.json"
-URL_MENU_JSON = "https://raw.githubusercontent.com/FernandoSapient/BPTSP05_2526-1/main/menu.json"
+URL_MENU_JSON = "https://raw.githubusercontent.com/FernandoSapient/BPTSP05_2526-1/refs/heads/main/menu.json"
  
 class App():
     """Es la encargada de abrir y gestionar todas las operaciones que se tienen que llevar a cabo para gestionar la aplicación.
@@ -152,6 +152,7 @@ class App():
 
                 # --- 3. Crear el objeto HotDog ---
                 hotdog_obj = HotDog(
+                    hotdog_nombre,
                     pan_obj, 
                     salchicha_obj, 
                     salsas_hotdog, 
@@ -386,17 +387,27 @@ class App():
             
             for hotdog_data in hotdogs_menu_data:
                 try:
+                    # 0. Obtener el nombre del hotdog
+                    hotdog_nombre = hotdog_data.get("Nombre") or hotdog_data.get("nombre") or "HotDog Desconocido"
+
                     # 1. Recuperar objetos de ingredientes principales usando los mapas
-                    pan_nombre = hotdog_data["Pan"]["Nombre"].lower()
+                    pan_field = hotdog_data["Pan"]
+                    if isinstance(pan_field, dict):
+                        pan_nombre = pan_field.get("Nombre", "").lower()
+                    else:
+                        pan_nombre = str(pan_field).lower()
                     pan_obj = self._panes_map.get(pan_nombre)
 
-                    salchicha_nombre = hotdog_data["Salchicha"]["Nombre"].lower()
+                    salchicha_field = hotdog_data["Salchicha"]
+                    if isinstance(salchicha_field, dict):
+                        salchicha_nombre = salchicha_field.get("Nombre", "").lower()
+                    else:
+                        salchicha_nombre = str(salchicha_field).lower()
                     salchicha_obj = self._salchichas_map.get(salchicha_nombre)
-                    
+
                     # 2. Recuperar acompañante (puede ser None)
                     acompañante_obj = None
                     acompañante_data = hotdog_data.get("Acompañante")
-                    # Acompañante puede ser None, la cadena 'None', un nombre (string) o un dict
                     if isinstance(acompañante_data, dict):
                         acomp_nombre = (acompañante_data.get("Nombre") or acompañante_data.get("nombre"))
                         if acomp_nombre:
@@ -408,27 +419,36 @@ class App():
                     if not pan_obj or not salchicha_obj:
                         print(f"ADVERTENCIA: Componente principal no encontrado para un HotDog. Omitiendo.")
                         continue
-                        
+
                     # 3. Recuperar listas de Salsas y Toppings
-                    
-                    # Para Salsas y Toppings, se puede recrear el objeto directamente o usar el mapa.
-                    # Usaremos el mapa para asegurar que usamos las instancias ya cargadas.
                     salsas_hotdog = []
-                    for salsa_data in hotdog_data.get("Salsas", []):
-                        salsa_nombre = salsa_data["Nombre"].lower()
+                    salsas_field = hotdog_data.get("Salsas", [])
+                    if not salsas_field:
+                        salsas_field = hotdog_data.get("salsas", [])
+                    for salsa_data in salsas_field:
+                        if isinstance(salsa_data, dict):
+                            salsa_nombre = salsa_data.get("Nombre", "").lower()
+                        else:
+                            salsa_nombre = str(salsa_data).lower()
                         salsa_obj = self._salsas_map.get(salsa_nombre)
                         if salsa_obj:
                             salsas_hotdog.append(salsa_obj)
 
                     toppings_hotdog = []
-                    for topping_data in hotdog_data.get("Toppings", []):
-                        topping_nombre = topping_data["Nombre"].lower()
+                    toppings_field = hotdog_data.get("Toppings", [])
+                    if not toppings_field:
+                        toppings_field = hotdog_data.get("toppings", [])
+                    for topping_data in toppings_field:
+                        if isinstance(topping_data, dict):
+                            topping_nombre = topping_data.get("Nombre", "").lower()
+                        else:
+                            topping_nombre = str(topping_data).lower()
                         topping_obj = self._toppings_map.get(topping_nombre)
                         if topping_obj:
                             toppings_hotdog.append(topping_obj)
 
-                    # 4. Crear el objeto HotDog
-                    hotdog_obj = HotDog(pan_obj, salchicha_obj, salsas_hotdog, toppings_hotdog, acompañante_obj)
+                    # 4. Crear el objeto HotDog con nombre
+                    hotdog_obj = HotDog(hotdog_nombre, pan_obj, salchicha_obj, salsas_hotdog, toppings_hotdog, acompañante_obj)
                     self.hotdogs.append(hotdog_obj)
                     hotdogs_cargados += 1
 

@@ -4,8 +4,9 @@ from Clases.Acompañante import Acompañante
 
 class HotDog():
     
-    def __init__(self, pan: Pan, salchicha: Salchicha, salsas: list, toppings: list, acompañante: Acompañante):
+    def __init__(self, nombre, pan: Pan, salchicha: Salchicha, salsas: list, toppings: list, acompañante: Acompañante):
         
+        self.nombre = nombre
         self.pan = pan
         self.salchicha = salchicha
         self.salsas = salsas
@@ -29,6 +30,7 @@ class HotDog():
         """Función para obtener la información del hotdog
         """        
         info = {
+            "Nombre": self.nombre,
             "Pan": self.pan.info_pan() if hasattr(self.pan, 'info_pan') else str(self.pan),
             "Salchicha": self.salchicha.info_salchicha() if hasattr(self.salchicha, 'info_salchicha') else str(self.salchicha),
             "Salsas": self.info_salsas(),
