@@ -8,7 +8,7 @@ class Toppings():
         self.tipo = tipo
         self.presentacion = presentacion
 
-    def info_topping(self):
+    def info_toppings(self):
         """Función para obtener la información de la salsa
         """        
         info = {
