@@ -172,11 +172,8 @@ class App():
         """
         Serializa toda la información disponible (ingredientes y hotdogs)
         y la guarda en un archivo JSON.
-        CORRECCIÓN: Se usa la función 'default' en json.dump para manejar la serialización de objetos personalizados, 
-        asegurando que todas las clases de ingredientes tengan un método de serialización dedicado para evitar 
-        incluir métodos internos en el JSON.
         """
-        
+
         # Función de codificación para manejar objetos personalizados. 
         # Esta función será pasada a json.dump(default=...)
         def _hotdog_json_encoder(obj):
