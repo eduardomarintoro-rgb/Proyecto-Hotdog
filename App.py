@@ -66,9 +66,7 @@ class App():
 # -------------------------------------------------------------------------------------------------------------------------------
 
     def abrir_API (self): 
-        """Función para crear objetos a partir de la API y almacenarlos en las listas de la instancia App.
-        """ 
-
+        """Función para crear objetos a partir de la API y almacenarlos en las listas de la instancia App."""
         print("--- 1. PROCESANDO INGREDIENTES Y CREANDO MAPAS DE BÚSQUEDA ---")
         # 1. Obtener los datos de ingredientes (se espera una lista de categorías)
         data_ingredientes_list = self.obtener_json_desde_url(URL_INGREDIENTES_JSON)
@@ -86,27 +84,27 @@ class App():
                 if categoria == "Salsa":
                     salsa_obj = Salsa(nombre, item_data.get("base"), item_data.get("color"))
                     self.salsa.append(salsa_obj)
-                    self._salsas_map[nombre.lower()] = salsa_obj # Clave en minúsculas
+                    self._salsas_map[nombre.lower()] = salsa_obj 
 
                 elif categoria == "toppings":
                     topping_obj = Toppings(nombre, item_data.get("tipo"), item_data.get("presentación"))
                     self.toppings.append(topping_obj)
-                    self._toppings_map[nombre.lower()] = topping_obj # Clave en minúsculas
+                    self._toppings_map[nombre.lower()] = topping_obj 
                     
                 elif categoria == "Pan":
                     pan_obj = Pan(nombre, item_data.get("tipo"), item_data.get("tamaño"), item_data.get("unidad"))
                     self.pan.append(pan_obj)
-                    self._panes_map[nombre.lower()] = pan_obj # Clave en minúsculas
+                    self._panes_map[nombre.lower()] = pan_obj 
 
                 elif categoria == "Salchicha":
                     salchicha_obj = Salchicha(nombre, item_data.get("tipo"), item_data.get("tamaño"), item_data.get("unidad"))
                     self.salchicha.append(salchicha_obj)
-                    self._salchichas_map[nombre.lower()] = salchicha_obj # Clave en minúsculas
+                    self._salchichas_map[nombre.lower()] = salchicha_obj 
 
                 elif categoria == "Acompañante":
                     acompañante_obj = Acompañante(nombre, item_data.get("tipo"), item_data.get("tamaño"), item_data.get("unidad"))
                     self.acompañantes.append(acompañante_obj)
-                    self._acompañantes_map[nombre.lower()] = acompañante_obj # Clave en minúsculas
+                    self._acompañantes_map[nombre.lower()] = acompañante_obj 
 
         print(f"Ingredientes cargados: Panes={len(self.pan)}, Salchichas={len(self.salchicha)}, Salsas={len(self.salsa)}, Toppings={len(self.toppings)}, Acompañantes={len(self.acompañantes)}")
 
@@ -118,14 +116,11 @@ class App():
             print("Error: El JSON del menú no es una lista con la estructura esperada.")
             return
 
-        # Iterar directamente sobre la lista de HotDogs
         for item_menu in data_menu_list: 
             try:
                 hotdog_nombre = item_menu.get("nombre", "HotDog Desconocido")
                 
                 # --- 1. Obtener nombres y buscar las instancias de Ingredientes Principales (por nombre en el mapa) ---
-                
-                # Pan y Salchicha
                 nombre_pan = item_menu.get("Pan", "").lower()
                 pan_obj = self._panes_map.get(nombre_pan)
 
@@ -136,32 +131,24 @@ class App():
                     print(f"ADVERTENCIA: Falta un componente principal (Pan: '{nombre_pan}' o Salchicha: '{nombre_salchicha}') para el HotDog '{hotdog_nombre}'. Omitiendo ítem.")
                     continue
 
-                # Acompañante (puede ser null, "No vendemos alcohol", o un nombre)
                 nombre_acompañante = item_menu.get("Acompañante") 
                 acompañante_obj = None
 
                 if nombre_acompañante is not None:
                     nombre_acompañante_lower = str(nombre_acompañante).lower()
                     
-                    # Ignorar si es el texto especial
                     if nombre_acompañante_lower != 'no vendemos alcohol': 
-                        # Buscar en el mapa de acompañantes
                         acompañante_obj = self._acompañantes_map.get(nombre_acompañante_lower)
-                        # Opcional: Agregar advertencia si el acompañante no se encuentra
                         if acompañante_obj is None and nombre_acompañante_lower:
                             print(f"ADVERTENCIA: El acompañante '{nombre_acompañante_lower}' no se encontró en el mapa de ingredientes.")
 
-
                 # --- 2. Obtener las listas de Salsas y Toppings ---
                 
-                # Concatenar las listas de salsas, manejando posibles inconsistencias de capitalización de clave (Salsas/salsas)
                 nombres_salsas = [s.lower() for s in item_menu.get("salsas", []) + item_menu.get("Salsas", [])]
                 salsas_hotdog = [self._salsas_map[nombre] for nombre in nombres_salsas if nombre in self._salsas_map]
 
-                # Concatenar las listas de toppings
                 nombres_toppings = [t.lower() for t in item_menu.get("toppings", []) + item_menu.get("Toppings", [])]
                 toppings_hotdog = [self._toppings_map[nombre] for nombre in nombres_toppings if nombre in self._toppings_map]
-
 
                 # --- 3. Crear el objeto HotDog ---
                 hotdog_obj = HotDog(
@@ -192,107 +179,69 @@ class App():
         """
         print(f"\n--- INICIANDO GUARDADO DE DATOS EN {nombre_archivo} ---")
         
-        # 1. Función auxiliar para serializar listas de objetos
-        # Se requiere 'self' aquí para poder acceder a '_serializar_hotdog' en el caso de que la lista contenga un HotDog.
-        def _serializar_lista(lista_objetos):
-            # Asume que todos los objetos tienen un método 'info_XYZ()' que devuelve un diccionario simple.
+        # Serializar ingredientes usando sus métodos info_* cuando existan.
+        def _serializar_ingredientes(lista, metodo_singular=None):
             serializados = []
-            for obj in lista_objetos:
+            for obj in lista:
                 try:
-                    # Intenta encontrar el método info_...() adecuado para serializar el objeto
-                    if hasattr(obj, 'info_hotdog'):
-                        # Si es un HotDog, llamamos a su serializador recursivo.
-                        # NOTA DE CORRECCIÓN: Llamamos a _serializar_hotdog con 'self' explícito.
-                        serializados.append(_serializar_hotdog(self, obj)) 
-                    elif hasattr(obj, 'info_acompañante'):
-                         serializados.append(obj.info_acompañante())
-                    elif hasattr(obj, 'info_pan'):
-                         serializados.append(obj.info_pan())
+                    if hasattr(obj, 'info_pan'):
+                        serializados.append(obj.info_pan())
                     elif hasattr(obj, 'info_salchicha'):
-                         serializados.append(obj.info_salchicha())
-                    # Para Toppings y Salsa, su método es info_salchicha() o similar, 
-                    # pero no heredan de Ingrediente en el código proporcionado.
-                    # Asumiremos que tienen un método que devuelve su diccionario de info.
-                    # Ya que los Toppings y Salsas no tienen un método específico en los archivos,
-                    # necesitamos adaptarlos.
-                    elif hasattr(obj, 'info_salchicha'): # Esto aplica a Salsa y Toppings en los archivos de referencia
                         serializados.append(obj.info_salchicha())
+                    elif hasattr(obj, 'info_acompañante'):
+                        serializados.append(obj.info_acompañante())
+                    elif hasattr(obj, 'info_salsa'):
+                        serializados.append(obj.info_salsa())
+                    elif hasattr(obj, 'info_topping'):
+                        serializados.append(obj.info_topping())
+                    elif hasattr(obj, 'info_toppings'):
+                        serializados.extend(obj.info_toppings())
                     else:
-                        # Fallback: Intentar serializar el diccionario de atributos
-                        print(f"ADVERTENCIA: Objeto de tipo {type(obj).__name__} sin método de info conocido. Usando __dict__.")
-                        serializados.append(obj.__dict__)
-                        
+                        # Fallback: usar atributos públicos
+                        serializados.append({k: v for k, v in getattr(obj, '__dict__', {}).items()})
                 except Exception as e:
-                    print(f"Error al serializar objeto {type(obj).__name__}: {e}")
-                    serializados.append({"Error": f"No se pudo serializar el objeto {type(obj).__name__}"})
+                    print(f"ADVERTENCIA: fallo al serializar {type(obj).__name__}: {e}")
+                    serializados.append({"Error": f"No se pudo serializar {type(obj).__name__}"})
             return serializados
 
-        # Función de codificación para manejar objetos personalizados. 
-        # Esta función será pasada a json.dump(default=...)
-        def _hotdog_json_encoder(obj):
-            """Encoder personalizado para json.dump.
-            Devuelve objetos ya serializables (dicts, listas, strings, números) para json.
-            """
-            # 1. Serialización del HotDog: serializar sus componentes recursivamente
-            if isinstance(obj, HotDog):
-                return {
-                    "Pan": _hotdog_json_encoder(obj.pan),
-                    "Salchicha": _hotdog_json_encoder(obj.salchicha),
-                    "Salsas": [_hotdog_json_encoder(s) for s in (obj.salsas or [])],
-                    "Toppings": [_hotdog_json_encoder(t) for t in (obj.toppings or [])],
-                    "Acompañante": _hotdog_json_encoder(obj.acompañante)
+        # Construir la estructura de salida que `cargar_datos_json` espera.
+        ingredientes_serializados = {
+            "panes": _serializar_ingredientes(self.pan),
+            "salchichas": _serializar_ingredientes(self.salchicha),
+            "salsas": _serializar_ingredientes(self.salsa),
+            "toppings": _serializar_ingredientes(self.toppings),
+            "acompañantes": _serializar_ingredientes(self.acompañantes),
+        }
+
+        hotdogs_serializados = []
+        for hd in self.hotdogs:
+            try:
+                hd_info = hd.info_hotdog() if hasattr(hd, 'info_hotdog') else {
+                    "Pan": getattr(hd, 'pan', None),
+                    "Salchicha": getattr(hd, 'salchicha', None),
+                    "Salsas": getattr(hd, 'salsas', []),
+                    "Toppings": getattr(hd, 'toppings', []),
+                    "Acompañante": getattr(hd, 'acompañante', None),
                 }
 
-            # 2. Ingredientes con métodos 'info_...' (soportar variantes 'info_topping'/'info_toppings')
-            if hasattr(obj, 'info_pan'):
-                return obj.info_pan()
-            if hasattr(obj, 'info_salchicha'):
-                return obj.info_salchicha()
-            if hasattr(obj, 'info_acompañante'):
-                return obj.info_acompañante()
-            if hasattr(obj, 'info_salsa'):
-                return obj.info_salsa()
-            # soportar nombre de método en singular o plural
-            if hasattr(obj, 'info_topping'):
-                return obj.info_topping()
-            if hasattr(obj, 'info_toppings'):
-                return obj.info_toppings()
+                # Asegurar que 'Acompañante' sea None (JSON null) si no existe
+                if isinstance(hd_info.get('Acompañante'), str) and hd_info.get('Acompañante').lower() == 'none':
+                    hd_info['Acompañante'] = None
 
-            # 3. Si es un tipo built-in serializable ya, devolver tal cual
-            if isinstance(obj, (str, int, float, bool)) or obj is None:
-                return obj
+                hotdogs_serializados.append(hd_info)
+            except Exception as e:
+                print(f"ADVERTENCIA: no se pudo serializar hotdog: {e}")
 
-            # 4. Si es una lista/tuple, serializar sus elementos
-            if isinstance(obj, (list, tuple)):
-                return [_hotdog_json_encoder(x) for x in obj]
-
-            # 5. Si tiene __dict__, devolver copia de atributos (fallback)
-            if hasattr(obj, '__dict__'):
-                print(f"ADVERTENCIA: Objeto de tipo {type(obj).__name__} sin método de info conocido. Usando __dict__.")
-                return {k: _hotdog_json_encoder(v) for k, v in obj.__dict__.items()}
-
-            # 6. No serializable
-            raise TypeError(f"Objeto de tipo {type(obj).__name__} no es serializable a JSON.")
-
-        # 1. Construir el diccionario de datos a guardar (usando las listas de objetos directamente)
         datos_a_guardar = {
-            "ingredientes": {
-                "panes": _serializar_lista(self.pan),
-                "salchichas": _serializar_lista(self.salchicha),
-                "salsas": _serializar_lista(self.salsa),
-                "toppings": _serializar_lista(self.toppings),
-                "acompañantes": _serializar_lista(self.acompañantes),
-            },
-            # CORRECCIÓN CLAVE: Aquí es donde se usa la función anidada. 
-            # Como es una función anidada, debemos pasarle el 'self' de la instancia App 
-            # y el objeto 'hd'.
-            "hotdogs_menu": [_serializar_hotdog(self, hd) for hd in self.hotdogs]
+            "ingredientes": ingredientes_serializados,
+            "hotdogs_menu": hotdogs_serializados
         }
         
         # 4. Guardar en archivo JSON
         try:
             # Serializar a string en memoria primero para forzar cualquier fallo de codificación
-            json_text = json.dumps(datos_a_guardar, indent=4, ensure_ascii=False, default=_hotdog_json_encoder)
+            # Serializar a texto; todos los objetos ya se convirtieron a dict/list/primitive
+            json_text = json.dumps(datos_a_guardar, indent=4, ensure_ascii=False)
 
             # Escribir de forma atómica: escribir en archivo temporal y luego reemplazar
             import tempfile
@@ -310,7 +259,7 @@ class App():
         except Exception as e:
             # Si ocurre un error de serialización, json.dumps lanzará antes de tocar el archivo
             print(f"ERROR: Ocurrió un error inesperado durante el guardado: {e}")
-        print("[italic green] === GUARDADO FINALIZADO ===")
+            print("[italic green] === GUARDADO FINALIZADO ===")
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------
         
@@ -349,36 +298,38 @@ class App():
         
         # Función auxiliar para crear objetos de ingredientes
         def _crear_objeto_ingrediente(categoria: str, datos: dict):
-            nombre = datos.get("Nombre")
-            tipo = datos.get("Tipo")
+            # Soportar claves con diferentes capitalizaciones y nombres
+            nombre = datos.get("Nombre") or datos.get("nombre") or datos.get("name")
+            tipo = datos.get("Tipo") or datos.get("tipo")
             
             # Nota: usamos la categoría para determinar la clase y el constructor adecuado.
             # Los nombres de claves varían ligeramente entre clases (e.g., 'Base' en Salsa vs 'Tamaño' en Pan).
             
             if categoria == "panes":
-                tamaño = datos.get("Tamaño")
-                unidad = datos.get("Unidad")
+                tamaño = datos.get("Tamaño") or datos.get("tamaño") or datos.get("tamano")
+                unidad = datos.get("Unidad") or datos.get("unidad")
                 return Pan(nombre, tipo, tamaño, unidad)
             
             elif categoria == "salchichas":
-                tamaño = datos.get("Tamaño")
-                unidad = datos.get("Unidad")
+                tamaño = datos.get("Tamaño") or datos.get("tamaño")
+                unidad = datos.get("Unidad") or datos.get("unidad")
                 return Salchicha(nombre, tipo, tamaño, unidad)
 
             elif categoria == "acompañantes":
-                tamaño = datos.get("Tamaño")
-                unidad = datos.get("Unidad")
+                tamaño = datos.get("Tamaño") or datos.get("tamaño")
+                unidad = datos.get("Unidad") or datos.get("unidad")
                 return Acompañante(nombre, tipo, tamaño, unidad)
             
             elif categoria == "salsas":
-                base = datos.get("Base")
-                color = datos.get("Color")
+                # Soportar claves 'Base'/'base' y 'Color'/'color'
+                base = datos.get("Base") or datos.get("base")
+                color = datos.get("Color") or datos.get("color")
                 # Nota: La clase Salsa no hereda de Ingrediente en los archivos proporcionados, 
                 # y usa 'base' y 'color'. Su constructor es Salsa(nombre, base, color).
                 return Salsa(nombre, base, color)
             
             elif categoria == "toppings":
-                presentacion = datos.get("Presentacion")
+                presentacion = datos.get("Presentacion") or datos.get("presentacion") or datos.get("presentación")
                 # Nota: La clase Toppings no hereda de Ingrediente en los archivos proporcionados,
                 # y usa 'tipo' y 'presentacion'. Su constructor es Toppings(nombre, tipo, presentacion).
                 return Toppings(nombre, tipo, presentacion)
@@ -444,10 +395,15 @@ class App():
                     
                     # 2. Recuperar acompañante (puede ser None)
                     acompañante_obj = None
-                    acompañante_data = hotdog_data["Acompañante"]
-                    if acompañante_data:
-                        acompañante_nombre = acompañante_data["Nombre"].lower()
-                        acompañante_obj = self._acompañantes_map.get(acompañante_nombre)
+                    acompañante_data = hotdog_data.get("Acompañante")
+                    # Acompañante puede ser None, la cadena 'None', un nombre (string) o un dict
+                    if isinstance(acompañante_data, dict):
+                        acomp_nombre = (acompañante_data.get("Nombre") or acompañante_data.get("nombre"))
+                        if acomp_nombre:
+                            acompañante_obj = self._acompañantes_map.get(str(acomp_nombre).lower())
+                    elif isinstance(acompañante_data, str):
+                        if acompañante_data.lower() not in ("none", "null", ""):
+                            acompañante_obj = self._acompañantes_map.get(acompañante_data.lower())
 
                     if not pan_obj or not salchicha_obj:
                         print(f"ADVERTENCIA: Componente principal no encontrado para un HotDog. Omitiendo.")
