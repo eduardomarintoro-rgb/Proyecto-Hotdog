@@ -2,18 +2,29 @@
 class Toppings():
     
     def __init__(self, nombre: str, tipo: str, presentacion: str):
-
-        self.id = id
+        # Use a stable, serializable identifier (integer) instead of the builtin function 'id'
+        # which would otherwise store a function object in __dict__ and break JSON serialization.
+        self.id = id(self)
         self.nombre = nombre
         self.tipo = tipo
         self.presentacion = presentacion
+        self.stock = 1
 
-    def info_toppings(self):
-        """Función para obtener la información de la salsa
-        """        
+    def dar_stock(self):
+        """Función para obtener el stock de la salsa
+        """
+        if self.stock <= 0:
+            return "No disponible"
+        else:
+            return "Disponible"
+        
+    def info_topping(self):
+        """Función para obtener la información del topping.
+        """
         info = {
             "Nombre": self.nombre,
             "Tipo": self.tipo,
-            "Presentacion": self.presentacion
+            "Presentacion": self.presentacion,
+            "Stock": self.dar_stock()
         }
         return info

@@ -278,6 +278,7 @@
     },
     "hotdogs_menu": [
         {
+            "Nombre": "simple",
             "Pan": {
                 "Nombre": "simple",
                 "Tipo": "blanco",
@@ -292,9 +293,11 @@
             },
             "Salsas": [],
             "Toppings": [],
-            "Acompañante": null
+            "Acompañante": null,
+            "Stock": 1
         },
         {
+            "Nombre": "inglés",
             "Pan": {
                 "Nombre": "integral",
                 "Tipo": "trigo entero",
@@ -326,9 +329,11 @@
                 "Tipo": "Papas fritas",
                 "Tamaño": 100,
                 "Unidad": "gramos"
-            }
+            },
+            "Stock": 1
         },
         {
+            "Nombre": "lederhosen",
             "Pan": {
                 "Nombre": "grande",
                 "Tipo": "blanco",
@@ -385,9 +390,11 @@
                     "Presentacion": "picadito"
                 }
             ],
-            "Acompañante": null
+            "Acompañante": null,
+            "Stock": 1
         },
         {
+            "Nombre": "bonjour",
             "Pan": {
                 "Nombre": "especial",
                 "Tipo": "queso",
@@ -439,9 +446,11 @@
                 "Tipo": "Refresco",
                 "Tamaño": 350,
                 "Unidad": "mililitros"
-            }
+            },
+            "Stock": 1
         },
         {
+            "Nombre": "varsovia",
             "Pan": {
                 "Nombre": "especial",
                 "Tipo": "queso",
@@ -488,9 +497,11 @@
                     "Presentacion": "rallado"
                 }
             ],
-            "Acompañante": null
+            "Acompañante": null,
+            "Stock": 1
         },
         {
+            "Nombre": "fitness",
             "Pan": {
                 "Nombre": "sin gluten",
                 "Tipo": "arroz",
@@ -526,9 +537,11 @@
                 "Tipo": "Jugo",
                 "Tamaño": 250,
                 "Unidad": "mililitros"
-            }
+            },
+            "Stock": 1
         },
         {
+            "Nombre": "soirée",
             "Pan": {
                 "Nombre": "saludable",
                 "Tipo": "avena",
@@ -575,9 +588,11 @@
                     "Presentacion": "picadito"
                 }
             ],
-            "Acompañante": null
+            "Acompañante": null,
+            "Stock": 1
         },
         {
+            "Nombre": "coctel",
             "Pan": {
                 "Nombre": "gigante",
                 "Tipo": "ajonjolí",
@@ -619,9 +634,11 @@
                     "Presentacion": "rallado"
                 }
             ],
-            "Acompañante": null
+            "Acompañante": null,
+            "Stock": 1
         },
         {
+            "Nombre": "coliseo",
             "Pan": {
                 "Nombre": "submarino",
                 "Tipo": "blanco",
@@ -673,9 +690,11 @@
                 "Tipo": "Refresco",
                 "Tamaño": 350,
                 "Unidad": "mililitros"
-            }
+            },
+            "Stock": 1
         },
         {
+            "Nombre": "mama mia",
             "Pan": {
                 "Nombre": "italiano",
                 "Tipo": "oregano",
@@ -717,7 +736,8 @@
                 "Tipo": "Papas chip",
                 "Tamaño": 200,
                 "Unidad": "gramos"
-            }
+            },
+            "Stock": 1
         }
     ]
 }
