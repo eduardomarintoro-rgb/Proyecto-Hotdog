@@ -15,24 +15,30 @@ class HotDog():
     def info_salsas(self):
         """Función para obtener la información de las salsas
         """
-        # Return a list of salsa info dicts
-        return [i.info_salsa() for i in self.salsas]
+        for i in self.salsas:
+            txt = '\n'
+            txt = txt + i.info_salsa() + '\n'
+    
+        return txt
     
     def info_toppings(self):
         """Función para obtener la información de los toppings
         """
-        # Return a list of topping info dicts
-        return [i.info_topping() for i in self.toppings]
+        for i in self.toppings:
+            txt = '\n'
+            txt = txt + i.info_topping() + '\n'
+    
+        return txt
     
     def info_hotdog(self):
         """Función para obtener la información del hotdog
         """        
         info = {
-            "Pan": self.pan.info_pan() if hasattr(self.pan, 'info_pan') else str(self.pan),
-            "Salchicha": self.salchicha.info_salchicha() if hasattr(self.salchicha, 'info_salchicha') else str(self.salchicha),
-            "Salsas": self.info_salsas(),
-            "Toppings": self.info_toppings(),
-            "Acompañante": self.acompañante.info_acompañante() if hasattr(self.acompañante, 'info_acompañante') else str(self.acompañante)
+            "Pan": self.pan,
+            "Salchicha": self.salchicha,
+            "Salsas": self.info_salsas,
+            "Toppings": self.info_toppings,
+            "Acompañante": self.acompañante
         }
         return info
     
