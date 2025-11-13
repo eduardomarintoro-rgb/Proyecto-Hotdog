@@ -12,7 +12,7 @@ class HotDog():
         self.salsas = salsas
         self.toppings = toppings
         self.acompañante = acompañante
-        self.stock = 0
+        self.stock = 1
 
     def info_salsas(self):
         """Función para obtener la información de las salsas

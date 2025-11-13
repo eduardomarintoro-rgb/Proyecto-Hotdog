@@ -338,7 +338,7 @@ def eliminar_ingrediente_categoria(ingredientes: list, nombre_ingrediente, hotdo
             print(hotdog.info_hotdog())
     
         while True:
-            option = input ("""
+            opcion = input ("""
             ¿Desea eliminar el ingrediente de todos modos? Esta acción eliminará todos los hotdogs que lo contengan.
                                         
             1. Sí 
@@ -346,10 +346,10 @@ def eliminar_ingrediente_categoria(ingredientes: list, nombre_ingrediente, hotdo
                                                                 
             ---> """)
                     
-            if option =="1":
+            if opcion =="1":
                 eliminar_ingrediente(ingredientes, hotdogs_app, hotdogs, nombre_ingrediente)
                 return
-            elif option =="2":
+            elif opcion =="2":
                 print ("[italic blue]Volviendo al menu...")
                 return
             else:

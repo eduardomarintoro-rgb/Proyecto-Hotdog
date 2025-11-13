@@ -228,7 +228,8 @@ class App():
                 # Asegurar que 'Acompañante' sea None (JSON null) si no existe
                 if isinstance(hd_info.get('Acompañante'), str) and hd_info.get('Acompañante').lower() == 'none':
                     hd_info['Acompañante'] = None
-
+                
+                hd_info['Stock'] = getattr(hd, 'stock', 1)
                 hotdogs_serializados.append(hd_info)
             except Exception as e:
                 print(f"ADVERTENCIA: no se pudo serializar hotdog: {e}")
@@ -449,6 +450,8 @@ class App():
 
                     # 4. Crear el objeto HotDog con nombre
                     hotdog_obj = HotDog(hotdog_nombre, pan_obj, salchicha_obj, salsas_hotdog, toppings_hotdog, acompañante_obj)
+                    # Asignar el stock si existe, si no, por defecto 1
+                    hotdog_obj.stock = hotdog_data.get('Stock', 1)
                     self.hotdogs.append(hotdog_obj)
                     hotdogs_cargados += 1
 

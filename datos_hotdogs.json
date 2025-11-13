@@ -293,7 +293,8 @@
             },
             "Salsas": [],
             "Toppings": [],
-            "Acompañante": null
+            "Acompañante": null,
+            "Stock": 1
         },
         {
             "Nombre": "inglés",
@@ -328,7 +329,8 @@
                 "Tipo": "Papas fritas",
                 "Tamaño": 100,
                 "Unidad": "gramos"
-            }
+            },
+            "Stock": 1
         },
         {
             "Nombre": "lederhosen",
@@ -388,7 +390,8 @@
                     "Presentacion": "picadito"
                 }
             ],
-            "Acompañante": null
+            "Acompañante": null,
+            "Stock": 1
         },
         {
             "Nombre": "bonjour",
@@ -443,7 +446,8 @@
                 "Tipo": "Refresco",
                 "Tamaño": 350,
                 "Unidad": "mililitros"
-            }
+            },
+            "Stock": 1
         },
         {
             "Nombre": "varsovia",
@@ -493,7 +497,8 @@
                     "Presentacion": "rallado"
                 }
             ],
-            "Acompañante": null
+            "Acompañante": null,
+            "Stock": 1
         },
         {
             "Nombre": "fitness",
@@ -532,7 +537,8 @@
                 "Tipo": "Jugo",
                 "Tamaño": 250,
                 "Unidad": "mililitros"
-            }
+            },
+            "Stock": 1
         },
         {
             "Nombre": "soirée",
@@ -582,7 +588,8 @@
                     "Presentacion": "picadito"
                 }
             ],
-            "Acompañante": null
+            "Acompañante": null,
+            "Stock": 1
         },
         {
             "Nombre": "coctel",
@@ -627,7 +634,8 @@
                     "Presentacion": "rallado"
                 }
             ],
-            "Acompañante": null
+            "Acompañante": null,
+            "Stock": 1
         },
         {
             "Nombre": "coliseo",
@@ -682,7 +690,8 @@
                 "Tipo": "Refresco",
                 "Tamaño": 350,
                 "Unidad": "mililitros"
-            }
+            },
+            "Stock": 1
         },
         {
             "Nombre": "mama mia",
@@ -727,7 +736,8 @@
                 "Tipo": "Papas chip",
                 "Tamaño": 200,
                 "Unidad": "gramos"
-            }
+            },
+            "Stock": 1
         }
     ]
 }
