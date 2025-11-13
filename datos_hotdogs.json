@@ -2,13 +2,6 @@
     "ingredientes": {
         "panes": [
             {
-                "Nombre": "simple",
-                "Tipo": "blanco",
-                "Tamaño": 6,
-                "Unidad": "pulgadas",
-                "Stock": "Disponible"
-            },
-            {
                 "Nombre": "integral",
                 "Tipo": "trigo entero",
                 "Tamaño": 6,
@@ -27,7 +20,7 @@
                 "Tipo": "blanco",
                 "Tamaño": 9,
                 "Unidad": "pulgadas",
-                "Stock": "Disponible"
+                "Stock": "No disponible"
             },
             {
                 "Nombre": "italiano",
@@ -85,7 +78,7 @@
                 "Tipo": "cerdo",
                 "Tamaño": 9,
                 "Unidad": "pulgadas",
-                "Stock": "Disponible"
+                "Stock": "No disponible"
             },
             {
                 "Nombre": "francesa",
@@ -135,7 +128,7 @@
                 "Nombre": "ketchup",
                 "Base": "tomate",
                 "Color": "rojo",
-                "Stock": "Disponible"
+                "Stock": "No disponible"
             },
             {
                 "Nombre": "mayonesa",
@@ -147,19 +140,19 @@
                 "Nombre": "BBQ",
                 "Base": "azucar morena",
                 "Color": "marrón",
-                "Stock": "Disponible"
+                "Stock": "No disponible"
             },
             {
                 "Nombre": "mostaza",
                 "Base": "mostaza",
                 "Color": "amarillo",
-                "Stock": "Disponible"
+                "Stock": "No disponible"
             },
             {
                 "Nombre": "relish",
                 "Base": "pepino",
                 "Color": "verde",
-                "Stock": "Disponible"
+                "Stock": "No disponible"
             }
         ],
         "toppings": [
@@ -173,25 +166,25 @@
                 "Nombre": "cebolla",
                 "Tipo": "vegetal",
                 "Presentacion": "cuadritos",
-                "Stock": "Disponible"
+                "Stock": "No disponible"
             },
             {
                 "Nombre": "repollo",
                 "Tipo": "vegetal",
                 "Presentacion": "rallado",
-                "Stock": "Disponible"
+                "Stock": "No disponible"
             },
             {
                 "Nombre": "cilantro",
                 "Tipo": "vegetal",
                 "Presentacion": "picadito",
-                "Stock": "Disponible"
+                "Stock": "No disponible"
             },
             {
                 "Nombre": "papitas",
                 "Tipo": "fritura",
                 "Presentacion": "picadito",
-                "Stock": "Disponible"
+                "Stock": "No disponible"
             },
             {
                 "Nombre": "nuez moscada",
@@ -307,27 +300,6 @@
     },
     "hotdogs_menu": [
         {
-            "Nombre": "simple",
-            "Pan": {
-                "Nombre": "simple",
-                "Tipo": "blanco",
-                "Tamaño": 6,
-                "Unidad": "pulgadas",
-                "Stock": "Disponible"
-            },
-            "Salchicha": {
-                "Nombre": "weiner",
-                "Tipo": "cerdo",
-                "Tamaño": 6,
-                "Unidad": "pulgadas",
-                "Stock": "Disponible"
-            },
-            "Salsas": [],
-            "Toppings": [],
-            "Acompañante": null,
-            "Stock": 1
-        },
-        {
             "Nombre": "inglés",
             "Pan": {
                 "Nombre": "integral",
@@ -348,7 +320,7 @@
                     "Nombre": "relish",
                     "Base": "pepino",
                     "Color": "verde",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 }
             ],
             "Toppings": [
@@ -356,7 +328,7 @@
                     "Nombre": "cebolla",
                     "Tipo": "vegetal",
                     "Presentacion": "cuadritos",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 }
             ],
             "Acompañante": {
@@ -374,39 +346,39 @@
                 "Tipo": "blanco",
                 "Tamaño": 9,
                 "Unidad": "pulgadas",
-                "Stock": "Disponible"
+                "Stock": "No disponible"
             },
             "Salchicha": {
                 "Nombre": "alemana",
                 "Tipo": "cerdo",
                 "Tamaño": 9,
                 "Unidad": "pulgadas",
-                "Stock": "Disponible"
+                "Stock": "No disponible"
             },
             "Salsas": [
                 {
                     "Nombre": "ketchup",
                     "Base": "tomate",
                     "Color": "rojo",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 },
                 {
                     "Nombre": "BBQ",
                     "Base": "azucar morena",
                     "Color": "marrón",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 },
                 {
                     "Nombre": "mostaza",
                     "Base": "mostaza",
                     "Color": "amarillo",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 },
                 {
                     "Nombre": "relish",
                     "Base": "pepino",
                     "Color": "verde",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 }
             ],
             "Toppings": [
@@ -414,25 +386,25 @@
                     "Nombre": "cebolla",
                     "Tipo": "vegetal",
                     "Presentacion": "cuadritos",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 },
                 {
                     "Nombre": "repollo",
                     "Tipo": "vegetal",
                     "Presentacion": "rallado",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 },
                 {
                     "Nombre": "cilantro",
                     "Tipo": "vegetal",
                     "Presentacion": "picadito",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 },
                 {
                     "Nombre": "papitas",
                     "Tipo": "fritura",
                     "Presentacion": "picadito",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 }
             ],
             "Acompañante": null,
@@ -465,13 +437,13 @@
                     "Nombre": "BBQ",
                     "Base": "azucar morena",
                     "Color": "marrón",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 },
                 {
                     "Nombre": "mostaza",
                     "Base": "mostaza",
                     "Color": "amarillo",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 }
             ],
             "Toppings": [
@@ -485,7 +457,7 @@
                     "Nombre": "cilantro",
                     "Tipo": "vegetal",
                     "Presentacion": "picadito",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 },
                 {
                     "Nombre": "nuez moscada",
@@ -529,13 +501,13 @@
                     "Nombre": "BBQ",
                     "Base": "azucar morena",
                     "Color": "marrón",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 },
                 {
                     "Nombre": "relish",
                     "Base": "pepino",
                     "Color": "verde",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 }
             ],
             "Toppings": [
@@ -549,13 +521,13 @@
                     "Nombre": "cilantro",
                     "Tipo": "vegetal",
                     "Presentacion": "picadito",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 },
                 {
                     "Nombre": "repollo",
                     "Tipo": "vegetal",
                     "Presentacion": "rallado",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 }
             ],
             "Acompañante": null,
@@ -589,13 +561,13 @@
                     "Nombre": "cilantro",
                     "Tipo": "vegetal",
                     "Presentacion": "picadito",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 },
                 {
                     "Nombre": "repollo",
                     "Tipo": "vegetal",
                     "Presentacion": "rallado",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 }
             ],
             "Acompañante": {
@@ -633,13 +605,13 @@
                     "Nombre": "BBQ",
                     "Base": "azucar morena",
                     "Color": "marrón",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 },
                 {
                     "Nombre": "mostaza",
                     "Base": "mostaza",
                     "Color": "amarillo",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 }
             ],
             "Toppings": [
@@ -653,13 +625,13 @@
                     "Nombre": "cilantro",
                     "Tipo": "vegetal",
                     "Presentacion": "picadito",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 },
                 {
                     "Nombre": "papitas",
                     "Tipo": "fritura",
                     "Presentacion": "picadito",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 }
             ],
             "Acompañante": null,
@@ -686,19 +658,19 @@
                     "Nombre": "ketchup",
                     "Base": "tomate",
                     "Color": "rojo",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 },
                 {
                     "Nombre": "mostaza",
                     "Base": "mostaza",
                     "Color": "amarillo",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 },
                 {
                     "Nombre": "relish",
                     "Base": "pepino",
                     "Color": "verde",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 }
             ],
             "Toppings": [
@@ -706,13 +678,13 @@
                     "Nombre": "cebolla",
                     "Tipo": "vegetal",
                     "Presentacion": "cuadritos",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 },
                 {
                     "Nombre": "repollo",
                     "Tipo": "vegetal",
                     "Presentacion": "rallado",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 }
             ],
             "Acompañante": null,
@@ -739,7 +711,7 @@
                     "Nombre": "ketchup",
                     "Base": "tomate",
                     "Color": "rojo",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 }
             ],
             "Toppings": [
@@ -753,25 +725,25 @@
                     "Nombre": "cebolla",
                     "Tipo": "vegetal",
                     "Presentacion": "cuadritos",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 },
                 {
                     "Nombre": "repollo",
                     "Tipo": "vegetal",
                     "Presentacion": "rallado",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 },
                 {
                     "Nombre": "cilantro",
                     "Tipo": "vegetal",
                     "Presentacion": "picadito",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 },
                 {
                     "Nombre": "papitas",
                     "Tipo": "fritura",
                     "Presentacion": "picadito",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 }
             ],
             "Acompañante": {
@@ -803,7 +775,7 @@
                     "Nombre": "ketchup",
                     "Base": "tomate",
                     "Color": "rojo",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 }
             ],
             "Toppings": [
@@ -817,13 +789,13 @@
                     "Nombre": "cebolla",
                     "Tipo": "vegetal",
                     "Presentacion": "cuadritos",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 },
                 {
                     "Nombre": "repollo",
                     "Tipo": "vegetal",
                     "Presentacion": "rallado",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 }
             ],
             "Acompañante": {

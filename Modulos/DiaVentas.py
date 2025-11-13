@@ -193,7 +193,7 @@ def simulacion_dia_de_ventas(app):
 
 
 def estadisticas_dia_ventas(app):
-    """Imprime estadísticas guardadas de simulaciones anteriores (si las hay)."""
+    """Muestra las estadísticas guardadas de simulaciones anteriores (si las hay)."""
     if not hasattr(app, 'resultados_simulaciones') or len(app.resultados_simulaciones) == 0:
         print("No hay simulaciones previas almacenadas.")
         return

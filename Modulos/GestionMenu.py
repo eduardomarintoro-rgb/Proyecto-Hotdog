@@ -1,9 +1,4 @@
 from rich import print
-from Clases.Pan import Pan
-from Clases.Acompañante import Acompañante
-from Clases.Salchicha import Salchicha
-from Clases.Salsa import Salsa
-from Clases.Toppings import Toppings
 from Clases.Hotdog import HotDog
 
 #Función para ver los hotdogs disponibles
@@ -33,7 +28,7 @@ def verificar_disponibilidad_hotdog(hotdogs):
 #Funcion para agregar un hotdog
 
 def agregar_hotdog(hotdogs, panes, salchichas, acompañantes, salsas, toppings):
-    """Función para agregar un hotdog al inventario.
+    """Función para agregar un hotdog al menu.
     """
     stock = True
 
