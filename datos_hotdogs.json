@@ -5,55 +5,64 @@
                 "Nombre": "simple",
                 "Tipo": "blanco",
                 "Tamaño": 6,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             {
                 "Nombre": "integral",
                 "Tipo": "trigo entero",
                 "Tamaño": 6,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             {
                 "Nombre": "especial",
                 "Tipo": "queso",
                 "Tamaño": 9,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             {
                 "Nombre": "grande",
                 "Tipo": "blanco",
                 "Tamaño": 9,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             {
                 "Nombre": "italiano",
                 "Tipo": "oregano",
                 "Tamaño": 9,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             {
                 "Nombre": "sin gluten",
                 "Tipo": "arroz",
                 "Tamaño": 6,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             {
                 "Nombre": "saludable",
                 "Tipo": "avena",
                 "Tamaño": 9,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             {
                 "Nombre": "gigante",
                 "Tipo": "ajonjolí",
                 "Tamaño": 12,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             {
                 "Nombre": "submarino",
                 "Tipo": "blanco",
                 "Tamaño": 12,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             }
         ],
         "salchichas": [
@@ -61,114 +70,134 @@
                 "Nombre": "weiner",
                 "Tipo": "cerdo",
                 "Tamaño": 6,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             {
                 "Nombre": "breakfast",
                 "Tipo": "res",
                 "Tamaño": 6,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             {
                 "Nombre": "alemana",
                 "Tipo": "cerdo",
                 "Tamaño": 9,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             {
                 "Nombre": "francesa",
                 "Tipo": "res",
                 "Tamaño": 9,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             {
                 "Nombre": "polaca",
                 "Tipo": "mezcla",
                 "Tamaño": 9,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             {
                 "Nombre": "light",
                 "Tipo": "pollo",
                 "Tamaño": 6,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             {
                 "Nombre": "boudin",
                 "Tipo": "pollo",
                 "Tamaño": 9,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             {
                 "Nombre": "vienna",
                 "Tipo": "mezcla",
                 "Tamaño": 12,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             {
                 "Nombre": "salicce",
                 "Tipo": "cerdo",
                 "Tamaño": 12,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             }
         ],
         "salsas": [
             {
                 "Nombre": "ketchup",
                 "Base": "tomate",
-                "Color": "rojo"
+                "Color": "rojo",
+                "Stock": "Disponible"
             },
             {
                 "Nombre": "mayonesa",
                 "Base": "aceite",
-                "Color": "blanco"
+                "Color": "blanco",
+                "Stock": "Disponible"
             },
             {
                 "Nombre": "BBQ",
                 "Base": "azucar morena",
-                "Color": "marrón"
+                "Color": "marrón",
+                "Stock": "Disponible"
             },
             {
                 "Nombre": "mostaza",
                 "Base": "mostaza",
-                "Color": "amarillo"
+                "Color": "amarillo",
+                "Stock": "Disponible"
             },
             {
                 "Nombre": "relish",
                 "Base": "pepino",
-                "Color": "verde"
+                "Color": "verde",
+                "Stock": "Disponible"
             }
         ],
         "toppings": [
             {
                 "Nombre": "tomate",
                 "Tipo": "vegetal",
-                "Presentacion": "cuadritos"
+                "Presentacion": "cuadritos",
+                "Stock": "Disponible"
             },
             {
                 "Nombre": "cebolla",
                 "Tipo": "vegetal",
-                "Presentacion": "cuadritos"
+                "Presentacion": "cuadritos",
+                "Stock": "Disponible"
             },
             {
                 "Nombre": "repollo",
                 "Tipo": "vegetal",
-                "Presentacion": "rallado"
+                "Presentacion": "rallado",
+                "Stock": "Disponible"
             },
             {
                 "Nombre": "cilantro",
                 "Tipo": "vegetal",
-                "Presentacion": "picadito"
+                "Presentacion": "picadito",
+                "Stock": "Disponible"
             },
             {
                 "Nombre": "papitas",
                 "Tipo": "fritura",
-                "Presentacion": "picadito"
+                "Presentacion": "picadito",
+                "Stock": "Disponible"
             },
             {
                 "Nombre": "nuez moscada",
                 "Tipo": "nuez",
-                "Presentacion": "moscada"
+                "Presentacion": "moscada",
+                "Stock": "Disponible"
             }
         ],
         "acompañantes": [
@@ -283,13 +312,15 @@
                 "Nombre": "simple",
                 "Tipo": "blanco",
                 "Tamaño": 6,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             "Salchicha": {
                 "Nombre": "weiner",
                 "Tipo": "cerdo",
                 "Tamaño": 6,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             "Salsas": [],
             "Toppings": [],
@@ -302,26 +333,30 @@
                 "Nombre": "integral",
                 "Tipo": "trigo entero",
                 "Tamaño": 6,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             "Salchicha": {
                 "Nombre": "breakfast",
                 "Tipo": "res",
                 "Tamaño": 6,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             "Salsas": [
                 {
                     "Nombre": "relish",
                     "Base": "pepino",
-                    "Color": "verde"
+                    "Color": "verde",
+                    "Stock": "Disponible"
                 }
             ],
             "Toppings": [
                 {
                     "Nombre": "cebolla",
                     "Tipo": "vegetal",
-                    "Presentacion": "cuadritos"
+                    "Presentacion": "cuadritos",
+                    "Stock": "Disponible"
                 }
             ],
             "Acompañante": {
@@ -338,56 +373,66 @@
                 "Nombre": "grande",
                 "Tipo": "blanco",
                 "Tamaño": 9,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             "Salchicha": {
                 "Nombre": "alemana",
                 "Tipo": "cerdo",
                 "Tamaño": 9,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             "Salsas": [
                 {
                     "Nombre": "ketchup",
                     "Base": "tomate",
-                    "Color": "rojo"
+                    "Color": "rojo",
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "BBQ",
                     "Base": "azucar morena",
-                    "Color": "marrón"
+                    "Color": "marrón",
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "mostaza",
                     "Base": "mostaza",
-                    "Color": "amarillo"
+                    "Color": "amarillo",
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "relish",
                     "Base": "pepino",
-                    "Color": "verde"
+                    "Color": "verde",
+                    "Stock": "Disponible"
                 }
             ],
             "Toppings": [
                 {
                     "Nombre": "cebolla",
                     "Tipo": "vegetal",
-                    "Presentacion": "cuadritos"
+                    "Presentacion": "cuadritos",
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "repollo",
                     "Tipo": "vegetal",
-                    "Presentacion": "rallado"
+                    "Presentacion": "rallado",
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "cilantro",
                     "Tipo": "vegetal",
-                    "Presentacion": "picadito"
+                    "Presentacion": "picadito",
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "papitas",
                     "Tipo": "fritura",
-                    "Presentacion": "picadito"
+                    "Presentacion": "picadito",
+                    "Stock": "Disponible"
                 }
             ],
             "Acompañante": null,
@@ -399,46 +444,54 @@
                 "Nombre": "especial",
                 "Tipo": "queso",
                 "Tamaño": 9,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             "Salchicha": {
                 "Nombre": "francesa",
                 "Tipo": "res",
                 "Tamaño": 9,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             "Salsas": [
                 {
                     "Nombre": "mayonesa",
                     "Base": "aceite",
-                    "Color": "blanco"
+                    "Color": "blanco",
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "BBQ",
                     "Base": "azucar morena",
-                    "Color": "marrón"
+                    "Color": "marrón",
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "mostaza",
                     "Base": "mostaza",
-                    "Color": "amarillo"
+                    "Color": "amarillo",
+                    "Stock": "Disponible"
                 }
             ],
             "Toppings": [
                 {
                     "Nombre": "tomate",
                     "Tipo": "vegetal",
-                    "Presentacion": "cuadritos"
+                    "Presentacion": "cuadritos",
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "cilantro",
                     "Tipo": "vegetal",
-                    "Presentacion": "picadito"
+                    "Presentacion": "picadito",
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "nuez moscada",
                     "Tipo": "nuez",
-                    "Presentacion": "moscada"
+                    "Presentacion": "moscada",
+                    "Stock": "Disponible"
                 }
             ],
             "Acompañante": {
@@ -455,46 +508,54 @@
                 "Nombre": "especial",
                 "Tipo": "queso",
                 "Tamaño": 9,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             "Salchicha": {
                 "Nombre": "polaca",
                 "Tipo": "mezcla",
                 "Tamaño": 9,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             "Salsas": [
                 {
                     "Nombre": "mayonesa",
                     "Base": "aceite",
-                    "Color": "blanco"
+                    "Color": "blanco",
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "BBQ",
                     "Base": "azucar morena",
-                    "Color": "marrón"
+                    "Color": "marrón",
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "relish",
                     "Base": "pepino",
-                    "Color": "verde"
+                    "Color": "verde",
+                    "Stock": "Disponible"
                 }
             ],
             "Toppings": [
                 {
                     "Nombre": "tomate",
                     "Tipo": "vegetal",
-                    "Presentacion": "cuadritos"
+                    "Presentacion": "cuadritos",
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "cilantro",
                     "Tipo": "vegetal",
-                    "Presentacion": "picadito"
+                    "Presentacion": "picadito",
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "repollo",
                     "Tipo": "vegetal",
-                    "Presentacion": "rallado"
+                    "Presentacion": "rallado",
+                    "Stock": "Disponible"
                 }
             ],
             "Acompañante": null,
@@ -506,30 +567,35 @@
                 "Nombre": "sin gluten",
                 "Tipo": "arroz",
                 "Tamaño": 6,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             "Salchicha": {
                 "Nombre": "light",
                 "Tipo": "pollo",
                 "Tamaño": 6,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             "Salsas": [],
             "Toppings": [
                 {
                     "Nombre": "tomate",
                     "Tipo": "vegetal",
-                    "Presentacion": "cuadritos"
+                    "Presentacion": "cuadritos",
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "cilantro",
                     "Tipo": "vegetal",
-                    "Presentacion": "picadito"
+                    "Presentacion": "picadito",
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "repollo",
                     "Tipo": "vegetal",
-                    "Presentacion": "rallado"
+                    "Presentacion": "rallado",
+                    "Stock": "Disponible"
                 }
             ],
             "Acompañante": {
@@ -546,46 +612,54 @@
                 "Nombre": "saludable",
                 "Tipo": "avena",
                 "Tamaño": 9,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             "Salchicha": {
                 "Nombre": "boudin",
                 "Tipo": "pollo",
                 "Tamaño": 9,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             "Salsas": [
                 {
                     "Nombre": "mayonesa",
                     "Base": "aceite",
-                    "Color": "blanco"
+                    "Color": "blanco",
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "BBQ",
                     "Base": "azucar morena",
-                    "Color": "marrón"
+                    "Color": "marrón",
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "mostaza",
                     "Base": "mostaza",
-                    "Color": "amarillo"
+                    "Color": "amarillo",
+                    "Stock": "Disponible"
                 }
             ],
             "Toppings": [
                 {
                     "Nombre": "tomate",
                     "Tipo": "vegetal",
-                    "Presentacion": "cuadritos"
+                    "Presentacion": "cuadritos",
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "cilantro",
                     "Tipo": "vegetal",
-                    "Presentacion": "picadito"
+                    "Presentacion": "picadito",
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "papitas",
                     "Tipo": "fritura",
-                    "Presentacion": "picadito"
+                    "Presentacion": "picadito",
+                    "Stock": "Disponible"
                 }
             ],
             "Acompañante": null,
@@ -597,41 +671,48 @@
                 "Nombre": "gigante",
                 "Tipo": "ajonjolí",
                 "Tamaño": 12,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             "Salchicha": {
                 "Nombre": "vienna",
                 "Tipo": "mezcla",
                 "Tamaño": 12,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             "Salsas": [
                 {
                     "Nombre": "ketchup",
                     "Base": "tomate",
-                    "Color": "rojo"
+                    "Color": "rojo",
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "mostaza",
                     "Base": "mostaza",
-                    "Color": "amarillo"
+                    "Color": "amarillo",
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "relish",
                     "Base": "pepino",
-                    "Color": "verde"
+                    "Color": "verde",
+                    "Stock": "Disponible"
                 }
             ],
             "Toppings": [
                 {
                     "Nombre": "cebolla",
                     "Tipo": "vegetal",
-                    "Presentacion": "cuadritos"
+                    "Presentacion": "cuadritos",
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "repollo",
                     "Tipo": "vegetal",
-                    "Presentacion": "rallado"
+                    "Presentacion": "rallado",
+                    "Stock": "Disponible"
                 }
             ],
             "Acompañante": null,
@@ -643,46 +724,54 @@
                 "Nombre": "submarino",
                 "Tipo": "blanco",
                 "Tamaño": 12,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             "Salchicha": {
                 "Nombre": "salicce",
                 "Tipo": "cerdo",
                 "Tamaño": 12,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             "Salsas": [
                 {
                     "Nombre": "ketchup",
                     "Base": "tomate",
-                    "Color": "rojo"
+                    "Color": "rojo",
+                    "Stock": "Disponible"
                 }
             ],
             "Toppings": [
                 {
                     "Nombre": "tomate",
                     "Tipo": "vegetal",
-                    "Presentacion": "cuadritos"
+                    "Presentacion": "cuadritos",
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "cebolla",
                     "Tipo": "vegetal",
-                    "Presentacion": "cuadritos"
+                    "Presentacion": "cuadritos",
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "repollo",
                     "Tipo": "vegetal",
-                    "Presentacion": "rallado"
+                    "Presentacion": "rallado",
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "cilantro",
                     "Tipo": "vegetal",
-                    "Presentacion": "picadito"
+                    "Presentacion": "picadito",
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "papitas",
                     "Tipo": "fritura",
-                    "Presentacion": "picadito"
+                    "Presentacion": "picadito",
+                    "Stock": "Disponible"
                 }
             ],
             "Acompañante": {
@@ -699,36 +788,42 @@
                 "Nombre": "italiano",
                 "Tipo": "oregano",
                 "Tamaño": 9,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             "Salchicha": {
                 "Nombre": "francesa",
                 "Tipo": "res",
                 "Tamaño": 9,
-                "Unidad": "pulgadas"
+                "Unidad": "pulgadas",
+                "Stock": "Disponible"
             },
             "Salsas": [
                 {
                     "Nombre": "ketchup",
                     "Base": "tomate",
-                    "Color": "rojo"
+                    "Color": "rojo",
+                    "Stock": "Disponible"
                 }
             ],
             "Toppings": [
                 {
                     "Nombre": "tomate",
                     "Tipo": "vegetal",
-                    "Presentacion": "cuadritos"
+                    "Presentacion": "cuadritos",
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "cebolla",
                     "Tipo": "vegetal",
-                    "Presentacion": "cuadritos"
+                    "Presentacion": "cuadritos",
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "repollo",
                     "Tipo": "vegetal",
-                    "Presentacion": "rallado"
+                    "Presentacion": "rallado",
+                    "Stock": "Disponible"
                 }
             ],
             "Acompañante": {
