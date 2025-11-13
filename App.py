@@ -48,9 +48,7 @@ class App():
         self._acompañantes_map = {}
         self._salsas_map = {}
         self._toppings_map = {}
-
-#-------------------------------------------------------------------------------------------------------------------------------------------------            
-                    
+                 
     def obtener_json_desde_url(self, url: str):
         """
         Obtiene y parsea el contenido JSON desde una URL.
@@ -62,8 +60,6 @@ class App():
         except requests.exceptions.RequestException as e:
             print(f"Error al obtener o parsear el JSON de {url}: {e}")
             return None
-    
-# -------------------------------------------------------------------------------------------------------------------------------
 
     def abrir_API (self): 
         """Función para crear objetos a partir de la API y almacenarlos en las listas de la instancia App."""
@@ -262,9 +258,7 @@ class App():
             # Si ocurre un error de serialización, json.dumps lanzará antes de tocar el archivo
             print(f"ERROR: Ocurrió un error inesperado durante el guardado: {e}")
             print("[italic green] === GUARDADO FINALIZADO ===")
-
-#-------------------------------------------------------------------------------------------------------------------------------------------------
-        
+     
     def cargar_datos_json(self, nombre_archivo: str = "datos_hotdogs.json"):
         """
         Lee el archivo JSON guardado y reconstruye los objetos de HotDogs e ingredientes 
@@ -469,14 +463,6 @@ class App():
         
         print(f"Carga de datos JSON completada desde '{nombre_archivo}'.")        
 
-#-------------------------------------------------------------------------------------------------------------------------------------------------
-
-    def ver_estadisticas (self):
-        """Función para ver las estadisticas de las simulaciones. 
-        """  
-        
-            
-#-------------------------------------------------------------------------------------------------------------------------------------------------   
 
     def principal_menu(self):
         """Menu principal. Posee las acciones principales para gestionar el programa.
@@ -532,8 +518,6 @@ class App():
                 print ("\n[italic red]Opción inválida\n")
                 os.system('cls')
 
-#-------------------------------------------------------------------------------------------------------------------------------------------------
-    
     def start_app(self):
         """Función para darle inicio al programa
         """            

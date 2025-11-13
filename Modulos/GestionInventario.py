@@ -12,37 +12,37 @@ from Clases.Hotdog import HotDog
 #Funciones para listar todos los ingredientes de una categoría
 
 def ver_inventario_completo(panes, salchichas, acompañantes, salsas, toppings):
-        """Funcion para seleccionar la categoría de ingredientes a gestionar 
-        """        
-        print ("\n[italic blue]---------- Inventario Completo ---------- ")
+    """Funcion para seleccionar la categoría de ingredientes a gestionar 
+    """        
+    print ("\n[italic blue]---------- Inventario Completo ---------- ")
 
-        print ("\n[italic blue]--- Panes ---")
-        for ingrediente in panes:
-            print("\n", ingrediente.info_pan())
+    print ("\n[italic blue]--- Panes ---")
+    for ingrediente in panes:
+        print("\n", ingrediente.info_pan())
 
-        print ("\n[italic blue]--- Salchichas ---")
-        for ingrediente in salchichas:
-            print("\n", ingrediente.info_salchicha())
+    print ("\n[italic blue]--- Salchichas ---")
+    for ingrediente in salchichas:
+        print("\n", ingrediente.info_salchicha())
 
-        print ("\n[italic blue]--- Acompañantes ---")
-        for ingrediente in acompañantes:
-            print("\n", ingrediente.info_acompañante())
-        
-        print ("\n[italic blue]--- Salsas ---")
-        for ingrediente in salsas:
-            print("\n", ingrediente.info_salsa())
+    print ("\n[italic blue]--- Acompañantes ---")
+    for ingrediente in acompañantes:
+        print("\n", ingrediente.info_acompañante())
+    
+    print ("\n[italic blue]--- Salsas ---")
+    for ingrediente in salsas:
+        print("\n", ingrediente.info_salsa())
 
-        print ("\n[italic blue]--- Toppings ---")
-        for ingrediente in toppings:
-            print("\n", ingrediente.info_topping())
+    print ("\n[italic blue]--- Toppings ---")
+    for ingrediente in toppings:
+        print("\n", ingrediente.info_topping())
 
 
 #Funciones para listar todos los productos en esa categoria de un tipo
 def listar_ingredientes_categoria_tipo(panes, salchichas, acompañantes, salsas, toppings):
-        """Funcion para seleccionar la categoría de ingredientes a gestionar por tipo
-        """        
-        while True:
-            option = input ("""
+    """Funcion para seleccionar la categoría de ingredientes a gestionar por tipo
+    """        
+    while True:
+        option = input ("""
     ¿Qué categoría desea visualizar?
                                 
     1. Pan 
@@ -53,27 +53,27 @@ def listar_ingredientes_categoria_tipo(panes, salchichas, acompañantes, salsas,
     6. Regresar
                                                         
     ---> """)
-            
-            if option =="1":
-                listar_ingredientes_tipo(panes)
-                break
-            elif option =="2":
-                listar_ingredientes_tipo(salchichas)
-                break
-            elif option =="3":
-                listar_ingredientes_tipo(acompañantes)
-                break
-            elif option =="4":
-                listar_ingredientes_tipo(salsas)
-                break
-            elif option =="5":
-                listar_ingredientes_tipo(toppings)
-                break
-            elif option =="6":
-                print ("\n[italic blue]Regresando al menú de gestión de ingredientes...\n")
-                break
-            else:
-                print ("[italic red]Opción inválida")
+        
+        if option =="1":
+            listar_ingredientes_tipo(panes)
+            break
+        elif option =="2":
+            listar_ingredientes_tipo(salchichas)
+            break
+        elif option =="3":
+            listar_ingredientes_tipo(acompañantes)
+            break
+        elif option =="4":
+            listar_ingredientes_tipo(salsas)
+            break
+        elif option =="5":
+            listar_ingredientes_tipo(toppings)
+            break
+        elif option =="6":
+            print ("\n[italic blue]Regresando al menú de gestión de ingredientes...\n")
+            break
+        else:
+            print ("[italic red]Opción inválida")
 
 # Función para listar todos los ingredientes de un tipo dentro de una categoría
 def listar_ingredientes_tipo(ingredientes_categoria):
@@ -139,34 +139,36 @@ def buscar_ingrediente(panes, salchichas, acompañantes, salsas, toppings):
     return encontrados
 
 # Actualizar existencia de un producto específico
-
+def actualizar_existencia_ingredientes(panes, salchichas, acompañantes, salsas, toppings, hotdogs):
+    """Función para actualizar la existencia de un ingrediente específico dentro de una categoría.
+    """
 # Menu de gestión de inventario
 def gestion_inventario(self):
-        """Menu de las acciones del inventario.
-        """        
+    """Menu de las acciones del inventario.
+    """        
 
-        while True:
-            print ("\n[italic blue]---------- Acciones ---------- ")
-            opcion = input ("""                            
-    1. Visualizar todo el inventario 
-    2. Buscar un ingrediente específico 
-    3. Tipos de ingredientes por categoría
-    4. Actualizar la existencia de un producto específico 
-    5. Regresar
-                                    
-    ---> """)
-            if opcion == "1":
-                ver_inventario_completo(self.pan, self.salchicha, self.acompañantes, self.salsa, self.toppings)
-            elif opcion == "2":
-                buscar_ingrediente(self.pan, self.salchicha, self.acompañantes, self.salsa, self.toppings)
-            elif opcion == "3":
-                listar_ingredientes_categoria_tipo(self.pan, self.salchicha, self.acompañantes, self.salsa, self.toppings)
-            elif opcion == "4":
-                pass
+    while True:
+        print ("\n[italic blue]---------- Acciones ---------- ")
+        opcion = input ("""                            
+1. Visualizar todo el inventario 
+2. Buscar un ingrediente específico 
+3. Tipos de ingredientes por categoría
+4. Actualizar la existencia de un producto específico 
+5. Regresar
+                                
+---> """)
+        if opcion == "1":
+            ver_inventario_completo(self.pan, self.salchicha, self.acompañantes, self.salsa, self.toppings)
+        elif opcion == "2":
+            buscar_ingrediente(self.pan, self.salchicha, self.acompañantes, self.salsa, self.toppings)
+        elif opcion == "3":
+            listar_ingredientes_categoria_tipo(self.pan, self.salchicha, self.acompañantes, self.salsa, self.toppings)
+        elif opcion == "4":
+            pass
 
-            elif opcion == "5":
-                break
+        elif opcion == "5":
+            break
 
-            else:
-                print("\n[italic red]Opción inválida. Introduzca una opción válida por favor.\n")
-                
+        else:
+            print("\n[italic red]Opción inválida. Introduzca una opción válida por favor.\n")
+            

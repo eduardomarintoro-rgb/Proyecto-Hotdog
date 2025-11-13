@@ -126,7 +126,7 @@ def agregar_hotdog(hotdogs, panes, salchichas, acompañantes, salsas, toppings):
             return
 
     nuevo_hotdog = armar_hotdog(nombre_hotdog, nuevo_pan, nueva_salchicha, nuevas_salsas, nuevos_toppings, nuevo_acompañante)
-    nuevo_hotdog.stock = 1 
+    nuevo_hotdog.stock = stock
     hotdogs.append(nuevo_hotdog)
     print("\n[italic green]Hotdog agregado exitosamente.")
 
