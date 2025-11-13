@@ -82,7 +82,6 @@ def listar_ingredientes_tipo(ingredientes_categoria):
     tipo_buscar = input("Ingrese el tipo de ingrediente que desea listar: ")
     encontrados = [ingrediente for ingrediente in ingredientes_categoria if ingrediente.tipo.lower() == tipo_buscar.lower()]
 
-
     if encontrados:
         print(f"\n[italic green]Ingredientes del tipo '{tipo_buscar}':\n")
         print(f"\n[italic green]Cantidad de ingredientes encontrados' {len(encontrados)}':\n")
@@ -102,6 +101,80 @@ def listar_ingredientes_tipo(ingredientes_categoria):
                 print("\nIngrediente no identificado\n")
     else:
         print(f"\n[italic red]No se encontraron ingredientes del tipo '{tipo_buscar}'.\n")
+
+#Funciones para listar las existencias en esa categoria de un tipo
+def listar_existencias_categoria_tipo(panes, salchichas, acompañantes, salsas, toppings):
+    """Funcion para listar las existencias de la categoría de ingredientes a gestionar por tipo
+    """        
+    while True:
+        option = input ("""
+    ¿Qué categoría desea visualizar?
+                                
+    1. Pan 
+    2. Salchicha
+    3. Acompañante
+    4. Salsa
+    5. Topping
+    6. Regresar
+                                                        
+    ---> """)
+        
+        if option =="1":
+            listar_existencia_ingredientes_tipo(panes)
+            break
+        elif option =="2":
+            listar_existencia_ingredientes_tipo(salchichas)
+            break
+        elif option =="3":
+            listar_existencia_ingredientes_tipo(acompañantes)
+            break
+        elif option =="4":
+            listar_existencia_ingredientes_tipo(salsas)
+            break
+        elif option =="5":
+            listar_existencia_ingredientes_tipo(toppings)
+            break
+        elif option =="6":
+            print ("\n[italic blue]Regresando al menú de gestión de ingredientes...\n")
+            break
+        else:
+            print ("[italic red]Opción inválida")
+
+# Función para listar todos los ingredientes de un tipo dentro de una categoría
+def listar_existencia_ingredientes_tipo(ingredientes_categoria):
+    """Función para listar todos los ingredientes de un tipo dentro de una categoría
+    """
+    tipos = []
+    for ingrediente in ingredientes_categoria:
+        if ingrediente.tipo not in tipos:
+            tipos.append(ingrediente.tipo)
+
+    print("\n[italic blue]Tipos disponibles en esta categoría:\n")
+    if tipos:
+        for i in tipos:
+            encontrados = []
+            for j in ingredientes_categoria:
+                if i == j.tipo:
+                    encontrados.append(j)
+
+            if encontrados:
+                print(f"\n[italic green]Cantidad de ingredientes del tipo {i} encontrados: {len(encontrados)}\n")
+
+                for ingrediente in encontrados:
+                    if isinstance(ingrediente, Pan):
+                        print(ingrediente.info_pan())
+                    elif isinstance(ingrediente, Salchicha):
+                        print(ingrediente.info_salchicha())
+                    elif isinstance(ingrediente, Salsa):
+                        print(ingrediente.info_salsa())
+                    elif isinstance(ingrediente, Toppings):
+                        print(ingrediente.info_topping())
+                    elif isinstance(ingrediente, Acompañante):
+                        print(ingrediente.info_acompañante())
+                    else:
+                        print("\nIngrediente no identificado\n")
+    else:
+        print("[italic red]\nNo hay tipos disponibles en esta categoría.\n")
 
 # Función para buscar un ingrediente específico dentro de todas las categorías
 def buscar_ingrediente(panes, salchichas, acompañantes, salsas, toppings):
@@ -175,7 +248,7 @@ def gestion_inventario(self):
         elif opcion == "2":
             buscar_ingrediente(self.pan, self.salchicha, self.acompañantes, self.salsa, self.toppings)
         elif opcion == "3":
-            listar_ingredientes_categoria_tipo(self.pan, self.salchicha, self.acompañantes, self.salsa, self.toppings)
+            listar_existencias_categoria_tipo(self.pan, self.salchicha, self.acompañantes, self.salsa, self.toppings)
         elif opcion == "4":
             actualizar_existencia_ingredientes(self.pan, self.salchicha, self.acompañantes, self.salsa, self.toppings)
         elif opcion == "5":
