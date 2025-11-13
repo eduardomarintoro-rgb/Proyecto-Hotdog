@@ -5,7 +5,7 @@ class Acompañante(Ingrediente):
     def __init__(self, nombre: str, tipo: str, tamaño: int, unidad: str):
         
         super().__init__(nombre, tipo)
-        super().info_ingrediente
+        super().dar_stock()
 
         self.nombre = nombre
         self.tipo = tipo
@@ -19,6 +19,7 @@ class Acompañante(Ingrediente):
             "Nombre": self.nombre,
             "Tipo": self.tipo,
             "Tamaño": self.tamaño,
-            "Unidad": self.unidad
+            "Unidad": self.unidad,
+            "Stock": self.dar_stock()
         }
         return info
