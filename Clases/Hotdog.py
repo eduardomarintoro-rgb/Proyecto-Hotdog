@@ -14,6 +14,14 @@ class HotDog():
         self.acompañante = acompañante
         self.stock = 1
 
+    def dar_stock(self):
+        """Función para obtener el stock de la salsa
+        """
+        if self.stock < 0:
+            return "No disponible"
+        else:
+            return "Disponible"
+    
     def info_salsas(self):
         """Función para obtener la información de las salsas
         """
@@ -35,7 +43,8 @@ class HotDog():
             "Salchicha": self.salchicha.info_salchicha() if hasattr(self.salchicha, 'info_salchicha') else str(self.salchicha),
             "Salsas": self.info_salsas(),
             "Toppings": self.info_toppings(),
-            "Acompañante": self.acompañante.info_acompañante() if hasattr(self.acompañante, 'info_acompañante') else str(self.acompañante)
+            "Acompañante": self.acompañante.info_acompañante() if hasattr(self.acompañante, 'info_acompañante') else str(self.acompañante),
+            "Stock": self.dar_stock()
         }
         return info
     
