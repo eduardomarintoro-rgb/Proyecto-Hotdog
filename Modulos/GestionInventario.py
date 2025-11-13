@@ -139,9 +139,22 @@ def buscar_ingrediente(panes, salchichas, acompañantes, salsas, toppings):
     return encontrados
 
 # Actualizar existencia de un producto específico
-def actualizar_existencia_ingredientes(panes, salchichas, acompañantes, salsas, toppings, hotdogs):
+def actualizar_existencia_ingredientes(panes, salchichas, acompañantes, salsas, toppings):
     """Función para actualizar la existencia de un ingrediente específico dentro de una categoría.
     """
+    ingrediente = buscar_ingrediente(panes, salchichas, acompañantes, salsas, toppings)
+
+    if len(ingrediente) == 0:
+        print("\n[italic red]No se puede actualizar la existencia ya que el ingrediente no fue encontrado.\n")
+        return
+    
+    nuevo_stock = input("Ingrese la nueva existencia (1 para disponible, 0 para no disponible): ")
+    if nuevo_stock not in ['0', '1']:
+        print("\n[italic red]Valor inválido. La existencia debe ser '1' o '0'.\n")
+        return
+    ingrediente[0].stock = int(nuevo_stock)
+    print(f"\n[italic green]Existencia del ingrediente '{ingrediente[0].nombre}' actualizada exitosamente a {nuevo_stock}.\n")
+
 # Menu de gestión de inventario
 def gestion_inventario(self):
     """Menu de las acciones del inventario.
@@ -164,8 +177,7 @@ def gestion_inventario(self):
         elif opcion == "3":
             listar_ingredientes_categoria_tipo(self.pan, self.salchicha, self.acompañantes, self.salsa, self.toppings)
         elif opcion == "4":
-            pass
-
+            actualizar_existencia_ingredientes(self.pan, self.salchicha, self.acompañantes, self.salsa, self.toppings)
         elif opcion == "5":
             break
 
