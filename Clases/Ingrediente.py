@@ -9,7 +9,7 @@ class Ingrediente():
     def dar_stock(self):
         """Función para obtener el stock de la salsa
         """
-        if self.stock < 0:
+        if self.stock <= 0:
             return "No disponible"
         else:
             return "Disponible"
