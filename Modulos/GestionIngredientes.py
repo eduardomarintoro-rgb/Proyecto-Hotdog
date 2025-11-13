@@ -297,13 +297,13 @@ def registrar_salsa (salsas_app):
 
 
 def registrar_topping (toppings_app):
-        """Función para registrar una nueva salchicha
+        """Función para registrar una nuevo topping
         """  
         print ("\n[italic blue]------------- Introduzca los detalles del ingrediente ------------- \n")  
         toppings = toppings_app
         nombre = input("Introduzca su nombre: ")  
         tipo = input("Introduzca el tipo: ") 
-        presentacion = input("Tamaño de la salchicha en pulgadas: ") 
+        presentacion = input("Presentación: ") 
 
         if (nombre.isalpha() == False):
             print("\n[italic red] El nombre del ingrediente no debe contener números o caracteres especiales. Recuerde que el nombre debe ser único para cada ingrediente. Inténtelo de nuevo.\n")

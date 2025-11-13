@@ -2,11 +2,18 @@
     "ingredientes": {
         "panes": [
             {
+                "Nombre": "simple",
+                "Tipo": "blanco",
+                "Tamaño": 6,
+                "Unidad": "pulgadas",
+                "Stock": "No disponible"
+            },
+            {
                 "Nombre": "integral",
                 "Tipo": "trigo entero",
                 "Tamaño": 6,
                 "Unidad": "pulgadas",
-                "Stock": "Disponible"
+                "Stock": "No disponible"
             },
             {
                 "Nombre": "especial",
@@ -20,7 +27,7 @@
                 "Tipo": "blanco",
                 "Tamaño": 9,
                 "Unidad": "pulgadas",
-                "Stock": "No disponible"
+                "Stock": "Disponible"
             },
             {
                 "Nombre": "italiano",
@@ -41,7 +48,7 @@
                 "Tipo": "avena",
                 "Tamaño": 9,
                 "Unidad": "pulgadas",
-                "Stock": "Disponible"
+                "Stock": "No disponible"
             },
             {
                 "Nombre": "gigante",
@@ -64,21 +71,21 @@
                 "Tipo": "cerdo",
                 "Tamaño": 6,
                 "Unidad": "pulgadas",
-                "Stock": "Disponible"
+                "Stock": "No disponible"
             },
             {
                 "Nombre": "breakfast",
                 "Tipo": "res",
                 "Tamaño": 6,
                 "Unidad": "pulgadas",
-                "Stock": "Disponible"
+                "Stock": "No disponible"
             },
             {
                 "Nombre": "alemana",
                 "Tipo": "cerdo",
                 "Tamaño": 9,
                 "Unidad": "pulgadas",
-                "Stock": "No disponible"
+                "Stock": "Disponible"
             },
             {
                 "Nombre": "francesa",
@@ -106,7 +113,7 @@
                 "Tipo": "pollo",
                 "Tamaño": 9,
                 "Unidad": "pulgadas",
-                "Stock": "Disponible"
+                "Stock": "No disponible"
             },
             {
                 "Nombre": "vienna",
@@ -128,13 +135,13 @@
                 "Nombre": "ketchup",
                 "Base": "tomate",
                 "Color": "rojo",
-                "Stock": "No disponible"
+                "Stock": "Disponible"
             },
             {
                 "Nombre": "mayonesa",
                 "Base": "aceite",
                 "Color": "blanco",
-                "Stock": "Disponible"
+                "Stock": "No disponible"
             },
             {
                 "Nombre": "BBQ",
@@ -160,7 +167,7 @@
                 "Nombre": "tomate",
                 "Tipo": "vegetal",
                 "Presentacion": "cuadritos",
-                "Stock": "Disponible"
+                "Stock": "No disponible"
             },
             {
                 "Nombre": "cebolla",
@@ -172,7 +179,7 @@
                 "Nombre": "repollo",
                 "Tipo": "vegetal",
                 "Presentacion": "rallado",
-                "Stock": "No disponible"
+                "Stock": "Disponible"
             },
             {
                 "Nombre": "cilantro",
@@ -300,20 +307,41 @@
     },
     "hotdogs_menu": [
         {
+            "Nombre": "simple",
+            "Pan": {
+                "Nombre": "simple",
+                "Tipo": "blanco",
+                "Tamaño": 6,
+                "Unidad": "pulgadas",
+                "Stock": "No disponible"
+            },
+            "Salchicha": {
+                "Nombre": "weiner",
+                "Tipo": "cerdo",
+                "Tamaño": 6,
+                "Unidad": "pulgadas",
+                "Stock": "No disponible"
+            },
+            "Salsas": [],
+            "Toppings": [],
+            "Acompañante": null,
+            "Stock": 1
+        },
+        {
             "Nombre": "inglés",
             "Pan": {
                 "Nombre": "integral",
                 "Tipo": "trigo entero",
                 "Tamaño": 6,
                 "Unidad": "pulgadas",
-                "Stock": "Disponible"
+                "Stock": "No disponible"
             },
             "Salchicha": {
                 "Nombre": "breakfast",
                 "Tipo": "res",
                 "Tamaño": 6,
                 "Unidad": "pulgadas",
-                "Stock": "Disponible"
+                "Stock": "No disponible"
             },
             "Salsas": [
                 {
@@ -346,21 +374,21 @@
                 "Tipo": "blanco",
                 "Tamaño": 9,
                 "Unidad": "pulgadas",
-                "Stock": "No disponible"
+                "Stock": "Disponible"
             },
             "Salchicha": {
                 "Nombre": "alemana",
                 "Tipo": "cerdo",
                 "Tamaño": 9,
                 "Unidad": "pulgadas",
-                "Stock": "No disponible"
+                "Stock": "Disponible"
             },
             "Salsas": [
                 {
                     "Nombre": "ketchup",
                     "Base": "tomate",
                     "Color": "rojo",
-                    "Stock": "No disponible"
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "BBQ",
@@ -392,7 +420,7 @@
                     "Nombre": "repollo",
                     "Tipo": "vegetal",
                     "Presentacion": "rallado",
-                    "Stock": "No disponible"
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "cilantro",
@@ -431,7 +459,7 @@
                     "Nombre": "mayonesa",
                     "Base": "aceite",
                     "Color": "blanco",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 },
                 {
                     "Nombre": "BBQ",
@@ -451,7 +479,7 @@
                     "Nombre": "tomate",
                     "Tipo": "vegetal",
                     "Presentacion": "cuadritos",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 },
                 {
                     "Nombre": "cilantro",
@@ -495,7 +523,7 @@
                     "Nombre": "mayonesa",
                     "Base": "aceite",
                     "Color": "blanco",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 },
                 {
                     "Nombre": "BBQ",
@@ -515,7 +543,7 @@
                     "Nombre": "tomate",
                     "Tipo": "vegetal",
                     "Presentacion": "cuadritos",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 },
                 {
                     "Nombre": "cilantro",
@@ -527,7 +555,7 @@
                     "Nombre": "repollo",
                     "Tipo": "vegetal",
                     "Presentacion": "rallado",
-                    "Stock": "No disponible"
+                    "Stock": "Disponible"
                 }
             ],
             "Acompañante": null,
@@ -555,7 +583,7 @@
                     "Nombre": "tomate",
                     "Tipo": "vegetal",
                     "Presentacion": "cuadritos",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 },
                 {
                     "Nombre": "cilantro",
@@ -567,7 +595,7 @@
                     "Nombre": "repollo",
                     "Tipo": "vegetal",
                     "Presentacion": "rallado",
-                    "Stock": "No disponible"
+                    "Stock": "Disponible"
                 }
             ],
             "Acompañante": {
@@ -585,21 +613,21 @@
                 "Tipo": "avena",
                 "Tamaño": 9,
                 "Unidad": "pulgadas",
-                "Stock": "Disponible"
+                "Stock": "No disponible"
             },
             "Salchicha": {
                 "Nombre": "boudin",
                 "Tipo": "pollo",
                 "Tamaño": 9,
                 "Unidad": "pulgadas",
-                "Stock": "Disponible"
+                "Stock": "No disponible"
             },
             "Salsas": [
                 {
                     "Nombre": "mayonesa",
                     "Base": "aceite",
                     "Color": "blanco",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 },
                 {
                     "Nombre": "BBQ",
@@ -619,7 +647,7 @@
                     "Nombre": "tomate",
                     "Tipo": "vegetal",
                     "Presentacion": "cuadritos",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 },
                 {
                     "Nombre": "cilantro",
@@ -658,7 +686,7 @@
                     "Nombre": "ketchup",
                     "Base": "tomate",
                     "Color": "rojo",
-                    "Stock": "No disponible"
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "mostaza",
@@ -684,7 +712,7 @@
                     "Nombre": "repollo",
                     "Tipo": "vegetal",
                     "Presentacion": "rallado",
-                    "Stock": "No disponible"
+                    "Stock": "Disponible"
                 }
             ],
             "Acompañante": null,
@@ -711,7 +739,7 @@
                     "Nombre": "ketchup",
                     "Base": "tomate",
                     "Color": "rojo",
-                    "Stock": "No disponible"
+                    "Stock": "Disponible"
                 }
             ],
             "Toppings": [
@@ -719,7 +747,7 @@
                     "Nombre": "tomate",
                     "Tipo": "vegetal",
                     "Presentacion": "cuadritos",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 },
                 {
                     "Nombre": "cebolla",
@@ -731,7 +759,7 @@
                     "Nombre": "repollo",
                     "Tipo": "vegetal",
                     "Presentacion": "rallado",
-                    "Stock": "No disponible"
+                    "Stock": "Disponible"
                 },
                 {
                     "Nombre": "cilantro",
@@ -775,7 +803,7 @@
                     "Nombre": "ketchup",
                     "Base": "tomate",
                     "Color": "rojo",
-                    "Stock": "No disponible"
+                    "Stock": "Disponible"
                 }
             ],
             "Toppings": [
@@ -783,7 +811,7 @@
                     "Nombre": "tomate",
                     "Tipo": "vegetal",
                     "Presentacion": "cuadritos",
-                    "Stock": "Disponible"
+                    "Stock": "No disponible"
                 },
                 {
                     "Nombre": "cebolla",
@@ -795,7 +823,7 @@
                     "Nombre": "repollo",
                     "Tipo": "vegetal",
                     "Presentacion": "rallado",
-                    "Stock": "No disponible"
+                    "Stock": "Disponible"
                 }
             ],
             "Acompañante": {

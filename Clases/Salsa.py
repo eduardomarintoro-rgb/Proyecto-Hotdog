@@ -7,6 +7,7 @@ class Salsa():
         self.id = id(self)
         self.nombre = nombre
         self.base = base
+        self.tipo = base
         self.color = color
         self.stock = 1
 
